@@ -36,7 +36,7 @@ Biome:
   - write biome here # e.g. F1 Rivers and streams biome
 Ecosystem: 
   - write ecosystem here # e.g. F1.3 Freeze-thaw streams
-verbatimEcosystem: # add name of the ecosystem or naturetype according to any relevant local or national typology. E.g. fjell, skog, ... 
+verbatimEcosystem: Forest; Mountain # add name of the ecosystem or naturetype according to any relevant local or national typology. E.g. fjell, skog, ... 
 yearAdded: 2026 # the year when the indicator was first submitted to ecRxiv
 yearLastUpdate: 2026
 status: incomplete # options are complete, incomplete, or deprecated
@@ -202,6 +202,8 @@ meta |>
 
 <!--# Update this logg with short messages for each update -->
 - 15.06.2026 - Original PR
+
+- 22.06.2026 - Complete draft of first version
 :::
 
 
@@ -216,44 +218,95 @@ With a maximum of 300 words, describe the indicator in general terms as you woul
  -->
 
 1. **Background and rationale**:
-<!-- What does the metric represent? Why is this relevant for describing ecosystem condition in this ecosystem?
-What are the main anthropogenic impact factors? -->
+
+Birds are a fundamental component of global biodiversity and are among the most well-known and widely studied groups of organisms [@barrowclough2016many; @stork1997measuring]. Their visibility and familiarity make them especially suitable for both scientific assessment and public communication of environmental change [@bibby1999making; @santos2026geographical]. Beyond their recognizability, birds contribute significantly to ecosystem functioning through services such as pollination, seed dispersal, pest regulation, and nutrient cycling, which are essential for maintaining ecological balance and supporting human well-being [@whelan2015birds; @mariyappan2023ecological; @wenny2011need].
+
+Importantly, birds are highly sensitive to environmental variation and disturbance. Changes in their distribution, abundance, and breeding performance often reflect underlying shifts in ecosystem conditions. Bird populations respond to a wide range of natural and anthropogenic pressures, including land-use change, climate change, habitat degradation, and variation in food resources such as insects and seeds [@rigal2023farmland; @johnson2011global; @tscharntke2023agriculture]. This responsiveness makes them reliable bioindicators of ecosystem health and environmental change.
+
+Breeding birds, in particular, provide valuable insights because their presence and reproductive success depend closely on habitat quality, resource availability, and local environmental conditions during the breeding season [@fuller2012bird; @alerstam1982bird]. As a result, breeding bird indicators can effectively capture spatial and temporal changes in ecosystem integrity.
+
+Species richness of breeding birds is widely used as an indicator of ecosystem condition because it is simple, robust, and integrative [@gregory2003using; @devictor2009measuring]. It reflects the cumulative response of multiple species to environmental factors and can serve as a proxy for broader biodiversity patterns and ecosystem resilience. Consequently, monitoring breeding bird richness offers a practical and informative approach to assessing ecosystem status and tracking the impacts of environmental stressors over time.
+
 2. **Methods**:
 <!-- What kind of data is used? How is the data customized (modified, estimated, integrated) to fit its purpose as an indicator? -->
+
+ - *Data used:* 
+ 
+ Long-term breeding bird observations from the Norwegian terrestrial monitoring programme ([Hekkefulgovervåkingen](https://hekkefuglovervakingen.nina.no/Fugl/Default.aspx?ReturnUrl=%2fFugl%2f); formerly TOV-E)[@kaalaas2022norsk], covering multiple ecosystems, species, and decades.
+
+
+  - *Customization and processing:* 
+      - Species filtered using expert-defined lists to represent specific ecosystems.
+      - Observations converted to detection/non-detection data and analysed with point-level       - occupancy models (fitted with `spOccupancy`; @doser2022spoccupancy) using the last five years as temporal replicates.
+      - Expected species richness estimated for each ecosystem from selected species.
+      - Reference conditions defined using natural reserves (intact ecosystems).
+      - Indicator values scaled between $0$ and $1$, enabling standardized comparison of ecosystem condition across space and time
+
+
+
+
 3. **Interpretation**:
 <!-- Add a very short description of how the indicator values should be interpreted. Here's an example for a bumblebee indicator: An indicator value of 1 signifies an intact bumblebee community. Values decreasing toward zero reflect negative ecological change, specifically the decline of species expected to be present. This metric does not account for potentially positive changes, such as increases in species' abundance or the arrival of new species. Tip: Add text on the line directly following the subheader, and don't introduce blank lines. This way the whole paragraph renders as a block quote. -->
-An indicator value of 1 signifies ...
-Values decreasing toward zero reflect...
+
+An indicator value of $1$ represents a fully intact breeding bird community in forest or mountain ecosystems, meaning that the expected set of species is present under near-natural conditions. As the value declines toward $0$, it indicates increasing ecological degradation, expressed as a reduction in expected species richness due to changes in environmental conditions such as habitat loss or resource limitation. This indicator primarily reflects the loss of characteristic species and thus signals declining ecosystem quality and integrity. It provides a standardized way to compare ecosystem condition across sites and over time. However, it captures only negative changes; potential positive developments—such as increases in species abundance, colonization by new species, or shifts in community composition—are not reflected in the indicator.
+
 
 4. **Results and development needs**:
 <!-- Briefly, what does the indicator say about the ecosystem condition. What is the current status of  the metric (can it be used or is it still in development), and what immediate tasks remain to improve the indicator or to make the indicator operational -->
 
+The breeding bird indicator reflects ecosystem condition by measuring how closely the observed bird community matches the expected species richness for a given ecosystem under near-natural conditions. High values indicate a well-functioning and intact ecosystem, while lower values signal ecological degradation, typically linked to habitat change, reduced resource availability, or broader environmental pressures.
 
 
-## 2. About the underlying data
+## 2. About the underlying data {#sec-underlyingData}
 
 <!--# Give a general introduction the datasets you have used, and provide more specific details in the sub-chapters.  -->
+
+The breeding bird indicator is derived from observations collected through the Norwegian national monitoring programme [Hekkefulgovervåkingen](https://hekkefuglovervakingen.nina.no/Fugl/Default.aspx?ReturnUrl=%2fFugl%2f). This long-term scheme provides standardized data on bird populations across Norway and forms a common foundation for all indicator calculations. To ensure that the indicators reflect specific ecosystem conditions, species are selected based on expert-defined lists that identify those most representative of each ecosystem type.
+
+The monitoring programme was gradually established between $2005$ and $2011$ and currently includes nearly $500$ survey locations distributed across the country. Each location consists of multiple sampling points (typically $12–20$), and most sites are surveyed annually. Data collection is carried out largely by trained volunteer observers following a [standardized protocol](https://hekkefuglovervakingen.nina.no/Fugl/public/papirskjema/MethodologyEng.pdf), ensuring consistency across regions and years. Surveys are conducted once per year during the main breeding season (late May to early June), under suitable weather conditions.
+
+At each sampling point, observers record all birds seen or heard within a fixed time period, while additional observations of selected species are noted during movement between points. The dataset typically includes records of over $200$ bird species. All observations are quality-checked and stored in a central [database](https://hekkefuglovervakingen.nina.no/Fugl/Default.aspx) managed by NINA.
+
 
 ### 2.1 Spatial and temporal resolution and extent
 
 <!--# Describe the temporal and spatial resolution and extent of the data used -->
 
+The indicator is based on data from the Norwegian breeding bird monitoring programme (Hekkefuglovervåkingen), which covers terrestrial ecosystems across the entire country. The monitoring network consists of $492$ fixed survey routes distributed along major latitudinal and altitudinal gradients, providing broad ecological representation. Each route includes $12–20$ point-count locations, resulting in approximately $9,000$ sampling points nationwide.
+
+For this indicator, data from $2021$ to $2025$ are used, providing a recent and consistent time window. The temporal resolution is annual, as each route is surveyed once during the breeding season. Due to logistical constraints, around $370$ routes are sampled each year, ensuring coverage of roughly $80\%$ of the total network.
+
+Currently, the indicator is aggregated at the national scale, meaning that it reflects overall ecosystem condition across Norway. Although the spatial coverage would allow finer regional analyses, these have not yet been implemented.This also allows for regional analysis such as indicators for Northern and Southern Norway, biogeographic regions ie. alpine, boreal, arctic, etc.
+
 ### 2.2 Sampling design
 
 <!-- How was the data sampled? Describe potential sampling biases -->
+
+Bird data are collected using a standardized point-count survey design. Each route consists of a sequence of predefined counting points, typically spaced about 300 m apart and often arranged in a square-shaped layout (ca. $1.5$ km per side). At each point, observers record all birds seen or heard within a fixed observation period ($5$ minutes). In addition, selected species that are harder to detect are recorded while moving between points.
+
+Surveys are conducted once per year during the peak breeding season (late May to early June), under suitable weather conditions. Data collection is largely carried out by experienced volunteer observers following a consistent protocol, ensuring comparability across sites and years.
+
+Potential sources of sampling bias include variation in observer skill, uneven annual coverage of routes, and limitations in accounting for spatial structure in analyses. Furthermore, some habitats may be underrepresented due to accessibility constraints or terrain, which can influence detection probabilities and species representation.
 
 ### 2.3 Original units
 
 <!--# What are the original units for the most relevant  variables in the data-->
 
+During field surveys, observers record the number of individual birds seen or heard at each sampling point. For the purposes of this indicator, these raw counts are subsequently simplified into detection/non-detection (presence–absence) data, where each species is coded as either detected ($1$) or not detected ($0$) at a given point and survey occasion, regardless of the number of individuals observed.
+
+This transformation standardizes the data and allows it to be used in occupancy modelling frameworks. In the first stage of the workflow, the detection/non-detection data are used to estimate species-specific occupancy probabilities rather than abundance. These occupancy estimates provide a measure of how likely a species is to occur at a site, accounting for imperfect detection. The resulting metrics form the basis for further analyses, including the estimation of expected species richness and the development of ecosystem indicators.
 
 ### 2.4 Instructions for citing, using and accessing data
 
 <!--# Is the data openly available? If not, how can one access it? What are the key references to the datasets?   -->
 
+The data is publicly available on [GBIF](https://www.gbif.org/dataset/4a00502d-6342-4294-aad1-9727e5c24041) [@breedingBirdData].
+
 ### 2.5 Additional comments about the dataset
 
 <!--# Optional. Text here -->
+
+*Diego can help with this*
 
 ## 3. Indicator properties
 
@@ -261,6 +314,8 @@ Values decreasing toward zero reflect...
 
 <!--# Describe the rationale for assigning the indicator to the ECT class. See https://oneecosystem.pensoft.net/article/58218/
 This doesnt need to be very long. Maybe just a single sentence. -->
+
+B1 – Compositional state characteristics.
 
 ### 3.1.1 Other condition typologies
 
@@ -276,14 +331,38 @@ For example, and indicator called 'Trenching in mires' could be made to represen
 
 -->
 
+The indicator reflects the integrity and completeness of breeding bird communities within terrestrial ecosystems. It measures how closely the observed species assemblage matches the expected set of characteristic species under near-natural conditions. Lower values indicate a loss of characteristic species and reduced ecosystem integrity, signalling ecological degradation.
+
 ### 3.3 Collinearities with other indicators
 
 <!--# Describe known collinearities with other metrics (indicators or variables) that could become problematic if they were also included in the same Ecosystem Condition Assessment as the indicator described here. -->
 
+The breeding bird indicator is likely to be correlated with several other biodiversity and ecosystem condition metrics. In particular, it overlaps strongly with species richness indicators for other taxa (e.g. plants or insects), as these often respond to similar environmental gradients such as habitat quality and resource availability. It may also be collinear with habitat structure metrics (e.g. vegetation complexity or forest age), since bird community composition is closely linked to these factors.
+
+In addition, the indicator can correlate with abundance-based bird indices or other fauna indicators, as well as broader measures of ecosystem integrity or naturalness, because they capture related aspects of biodiversity condition [@Nater2025]. Including multiple highly correlated indicators in the same assessment could therefore lead to redundancy and overemphasize certain ecological dimensions, particularly biodiversity composition.
+
 
 ### 3.4 Impact factors
 
-<!--# Describe the main natural and anthropogenic factors that affecst the metric -->
+<!--# Describe the main natural and anthropogenic factors that affect the metric -->
+
+The breeding bird indicator is influenced by a range of natural and human-driven factors that affect bird communities and their habitats.
+
+- Natural factors:
+
+  - Climate variability (e.g. temperature, precipitation, and seasonal timing), which affects breeding success, migration, and food availability
+  - Habitat heterogeneity and natural succession, influencing vegetation structure and nesting opportunities
+  - Natural fluctuations in food resources, particularly insects and seeds
+  - Predation and interspecific interactions, which can shape species presence and community composition
+
+- Anthropogenic factors:
+
+  - Land-use change (e.g. forestry, agriculture, urbanization), leading to habitat loss, fragmentation, or alteration
+  - Climate change, altering species distributions, phenology, and ecosystem dynamics
+  - Changes in land management practices, such as intensification or abandonment
+  - Pollution and other environmental pressures that affect habitat quality and food resources.
+
+Together, these drivers influence species occupancy and richness, making the indicator sensitive to both gradual environmental change and more abrupt disturbances.
 
 ### 3.5 Spatial aggregation
 
@@ -294,6 +373,10 @@ For example, and indicator called 'Trenching in mires' could be made to represen
 ### 4.1 Reference condition
 
 <!--# Define the reference condition (or refer to where it is defined). Note the distinction between reference condition and reference levels 10.3897/oneeco.5.e58216  -->
+
+In this study, reference conditions are defined using bird communities observed in national parks and nature reserves, which are assumed to represent relatively intact forest and mountain ecosystems with minimal human disturbance. These protected areas provide a practical benchmark for the species composition and richness expected under near-natural conditions.
+
+The indicator values are therefore interpreted relative to these reference sites, allowing for a comparison between observed and expected ecosystem states. Unlike some other ecosystem types (e.g. agricultural systems), where clear reference conditions may be difficult to define, this approach provides a consistent and ecologically meaningful baseline for assessing the condition of forest and mountain ecosystems.
 
 ### 4.2 Reference levels
 
@@ -307,6 +390,19 @@ Why was the current option chosen and how were the reference levels quantified? 
 
  -->
 
+The indicator is scaled to range between X~0~ (worst condition) and X~100~ (best condition) to enable consistent interpretation across ecosystems and time.
+
+- **X~100~ (reference level – best condition)**:
+Defined by the expected species richness in national parks and nature reserves, which represent near-natural forest and mountain ecosystems with minimal human impact. These areas provide the ecological benchmark for an intact breeding bird community.
+
+- **X~0~ (worst condition)**:
+Represents a theoretical state where none of the expected characteristic species are present, corresponding to a highly degraded ecosystem.
+
+- **Intermediate values (X~n~)**:
+Values between 0 and 100 reflect the proportion of expected species richness observed relative to the reference condition. For example, a value of X~60~ indicates that roughly 60% of the expected species are present compared to intact reference systems.
+
+The reference levels were chosen because protected areas provide the most realistic and ecologically meaningful approximation of baseline conditions under low human pressure. The values are quantified by estimating expected species richness from occupancy models and then scaling these estimates relative to the reference sites, ensuring a comparable and standardized indicator across ecosystems.
+
 
 #### 4.2.1 Spatial resolution and validity
 
@@ -315,36 +411,338 @@ Why was the current option chosen and how were the reference levels quantified? 
 Describe the spatial resolution of the reference levels. E.g. is it defined as a fixed value for all areas, or does it vary. Also, at what spatial scale are the reference levels valid? For example, if the reference levels have a regional resolution (varies between regions), it might mean that it is only valid and correct to use for normalising local variable values that are first aggregated to regional scale. However, sometimes the reference levels are insensitive to this and can be used to scale variables at the local (e.g. plot) scale. 
 
  -->
+ 
+ The reference levels used to normalise the indicator are defined at the biogeographic regional scale, meaning that reference values vary across regions rather than being fixed nationwide. This approach accounts for natural differences in species composition, climate, and habitat conditions that influence expected bird communities in different parts of Norway.
+ 
+Accordingly, each biogeographic region has its own reference value ($X~100~$), derived from protected areas within that region. These region-specific benchmarks are most appropriate for interpreting ecosystem condition at regional or aggregated scales, ensuring that comparisons are ecologically meaningful within similar environmental contexts.
+
+While the regional reference levels can be applied to local observations (e.g. individual sampling points), their interpretation is most robust when results are aggregated to the regional level, where variability is reduced and the reference conditions are more representative.
 
 ## 5. Uncertainties
 ### 5.1 General uncertainties
 <!--# Describe the main reasons why you might not trust 100% the final value to represent the given ecosystem characteristic for the give ecosystem type. What aspects of this condition metric are most sensitive to subjective decitions? Is the spatial sampling sufficient? Does the choice of modeling framework affect the values? Is the metric relevant do describe ecosystem condition for the give ecosystem type?  -->
 
+Several factors limit how precisely the indicator reflects ecosystem condition. A major source of uncertainty is the subjective selection of species, as expert-defined species lists may not fully represent all ecological variation within each ecosystem. The definition of reference conditions (based on protected areas) also introduces uncertainty, since these sites may not be entirely free from human influence.
+
+The sampling design may introduce bias, as only a subset of routes is surveyed each year and some habitats or regions may be underrepresented due to accessibility constraints. In addition, the indicator depends on an occupancy modelling framework, which requires assumptions about detection probability and model structure; different modelling choices could produce different results. Finally, while breeding birds are informative indicators, they primarily capture community composition and may not fully represent all aspects of ecosystem condition.
+
+
 ### 5.2 Reported uncertainties
 <!-- Describe the nature of the errors you (hopefully) provide alongside the point estimate for the condition metric. It is especially important to clarify if the errors are inferential (referring to the uncertainty of the point estimate) or descriptive (referreing to the data itself). Here' an example text: "What we report as uncertainties in @tbl-finalTable are inferential and refer to the uncertainty around the point estimates. It does not directly describe variation in the data itself. 
 However, the variation in the mean is defined by the spatial variation only, and quartiles are obtained by bootstrapping the set of localities within a region, and calculating the indicator for each of 9999 such samples".   -->
 
+The uncertainties reported for this indicator are inferential, meaning they quantify the uncertainty around the estimated indicator values rather than describing variability in the raw data itself. These uncertainties arise from the occupancy modelling framework, including estimation of detection probabilities and species occurrence.
 
+We report uncertainty using 95% confidence intervals (CI) associated with the scaled indicator values. These intervals are derived by propagating uncertainty from the occupancy estimates through to expected species richness and the final normalized indicator. As a result, the 95% CI reflects the range within which the true ecosystem condition is likely to lie, given the available data and model assumptions, rather than direct variation in observed counts.
 
 ## 6. References
 
 <!--# You can add references manually or use a citation manager and add intext citations as with crossreferencing and hyperlinks. See https://quarto.org/docs/authoring/footnotes-and-citations.html -->
 
+::: {#refs}
+:::
+
 ## 7. Import and prepare datasets
+
+The workflow can be found in the GitHub repository: https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling. Download the code and save them in a folder that can be called to run this script (preferably in the relative path of this document using `here::here()`.
+
+Afterwards, the following should be run to set the parameters needed to run the model. The parameters include:
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+
+################################################################################
+# 1. User and path configuration
+################################################################################
+
+USER <- "mighty" # options: use a name you prefer
+#Specify youur woth USER in the 01_setPaths.R script
+
+source(here::here("scripts", "01_setPaths.R"))
+
+dataFolder    <- path_finder("dataFolder", user = USER)
+geoSpatFolder <- path_finder("ninaGeospatialFiles", user = USER)
+expertFolder  <- path_finder("expertData", user = USER)
+output_root   <- normalizePath(
+  path_finder("results", user = USER),
+  mustWork = FALSE
+)
+
+################################################################################
+# 3. Locale and function loading
+################################################################################
+
+# Ensure Norwegian characters are read correctly in expert input files.
+Sys.setlocale("LC_CTYPE", "Norwegian_Norway.utf8")
+
+# Load all project functions.
+function_files <- list.files(
+  path_finder("functions", user = USER),
+  pattern = "\\.R$",
+  recursive = TRUE,
+  full.names = TRUE
+)
+
+invisible(lapply(function_files, source))
+
+
+################################################################################
+# 4. Analysis settings
+################################################################################
+
+# Ecosystem to model.
+ecosystemType <- "Forest"   # Options: "Forest", "Mountain"
+
+# Version label used in output folder names.
+version <- 1
+version_label <- paste0("version_0", version)
+
+# Pipeline switches.
+fitModel       <- FALSE
+runPredictions <- FALSE
+runIndicators  <- FALSE
+runPostprocessing  <- TRUE
+
+# Model type switches.
+fit_single_species <- FALSE  # TRUE: PGOcc / spPGOcc per species
+fit_spatial_model  <- FALSE # TRUE: spatial NNGP model
+
+# Coordinate reference system used throughout the modelling workflow.
+modelCrs <- 25833
+
+# Years included in the model.
+modelYear <- c(2021, 2025)
+
+# Temporary directory.
+TEMPDIR <- tempdir()
+
+# Setting the resolution
+pred_resolution <- 100 # in metres¨
+aggregation_spacing <- 1000
+
+# Which column of predictions should be used to estimate indicators
+indicator_col = "mean"
+
+# How many groups should be used in grouping the species
+maxSpeciesInGrps <- 24
+
+
+################################################################################
+# 5. Model covariates
+################################################################################
+
+# Detection covariates affect the observation process.
+det_covs <- c("DEM", "landCover")
+
+# Occupancy covariates affect the ecological state process.
+occ_covs <- c("DEM", "landCover")
+
+
+################################################################################
+# 6. MCMC settings
+################################################################################
+
+n.batch       <- 20
+batch.length  <- 500
+n.burn        <- 5000
+n.thin        <- 50 # use 10 for single species.
+n.chains      <- 3
+
+n.neighbors   <- 10
+n.omp.threads <- 5
+
+
+################################################################################
+# 7. Output paths
+################################################################################
+
+species_dir <- if (fit_single_species) {
+  "single_species_model"
+} else {
+  "multiple_species_model"
+}
+
+spatial_dir <- if (fit_spatial_model) {
+  "spatialModel"
+} else {
+  "non_spatialModel"
+}
+
+path_to_results <- file.path(
+  output_root,
+  "modelFit",
+  version_label,
+  ecosystemType,
+  species_dir,
+  spatial_dir
+)
+
+path_to_predictions <- file.path(
+  output_root,
+  "prediction_outputs",
+  version_label,
+  ecosystemType,
+  species_dir,
+  spatial_dir
+)
+
+path_to_indicators <- file.path(
+  output_root,
+  "indicators_outputs",
+  version_label,
+  ecosystemType,
+  species_dir,
+  spatial_dir
+)
+
+# if runPostprocessing, specify whether you are interested in comparing all outputs from
+# the various models within the same ecosystem or that you are just interested in postprocessing
+# for the current configurations
+compareMultipleOutputs <- TRUE
+
+if(!compareMultipleOutputs){
+path_to_postProcessing <- file.path(  output_root,
+                                      "postProcessing_outputs",
+                                      version_label,
+                                      ecosystemType,
+                                      species_dir,
+                                      spatial_dir)
+} else {
+  path_to_postProcessing <- file.path(  output_root,
+                                        "postProcessing_outputs",
+                                        version_label,
+                                        ecosystemType,
+                                        "multipleOutputs")
+}
+
+path_for_logs <- file.path(
+  output_root,
+  "logs",
+  version_label,
+  ecosystemType
+)
+
+dir.create(path_to_results, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_to_predictions, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_to_indicators, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_for_logs, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_to_postProcessing, recursive = TRUE, showWarnings = FALSE)
+
+logfile <- file.path(
+  path_for_logs,
+  paste0("model_run_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".log")
+)
+```
+
 
 <!--# All the data import and preparation should be done in this chapter, before the analysis chapter. As a minimum, add code for importing data, and describe or show the data structure. You may also explain certain variables, what they represent, and their distributions -->
 
-### 7.1 Dataset A
+Two primary data sources are used:
+
+1. Breeding bird survey observations.
+2. Expert-defined species lists.
+
+A vignette on loading and filtering breeding bird data is [here](https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling/blob/main/vignettes/data_preparation.qmd).
+
+### 7.1 Hekkefulgovervåkingen
 
 <!--# Import and prepare the first dataset for analysis. Change the header from Dataset A to the name of the actual dataset. -->
+
+See @sec-underlyingData for the data description. 
+
+The breeding bird observations are retrieved directly from the database using the function a defined function `retrieve_breedingBirds_routesAndCounts`:
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+
+breedingBirdData <- retrieve_breedingBirds_routesAndCounts(
+  con             = con, # connection to the NINA database
+  dataFolder      = point_count_dir, #the direectory to save the data or retrived the catched data
+  overwrite_cache = FALSE, # option to overwrite the catched data
+  save_outputs    = TRUE,
+  crs             = modelCrs # The crs for the modelling
+)
+```
+
+
+This process retrieves survey routes, point locations, and bird counts and subsequently stores the processed results for future analyses.
+
+Caching ensures that future executions can proceed without repeatedly querying the database.
 
 ### 7.2. Dataset B
 
 <!--# Repeat the process for each dataset -->
 
+The ecosystem-specific species list is loaded using a defined function `retrieve_expertSpeciesList`:
+```{r}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+expertSpeciesData <- retrieve_expertSpeciesList(
+  path_to_file = expert_data_path,
+  ecosystem = ecosystemType
+)
+
+  # The selected species are extracted as:
+  expertSpecies <-
+  expertSpeciesData$expertSpeciesList$Species
+  
+  # Filter the data to the model year
+  ecosystemBreedingBird <- ecosystemBreedingBird %>%
+  dplyr::filter(
+    Year >= modelYear[1],
+    Year <= modelYear[2]
+  )
+```
+
+
+The dataset can be processed in a formot that `spOccuancy` can use for the model fitting.
+
+**Report the species used for each indicator here.**
+
+
 ## 8. Spatial units
 
 <!--# Describe the spatial units that you rely on in your analyses. Highlight the spatial units (the resolution) that the indicator values should be interpreted at. Potential spatial delineation data (maksing layers etc.) should be introduced under chapert 7. We recommend using the SEEA EA terminology of Basic Spatial Units (BSU), Ecosystem Asses (EA) and Ecosystem Accounting Area (EAA). -->
+
+The analysis is conducted using spatial units aligned with the SEEA EA framework. The Basic Spatial Units (BSUs) are defined at a grid resolution of 100 m, which is the scale at which predictions of species occurrence are produced. Although environmental covariates are originally available at a coarser resolution (1 km), they are resampled to 100 m to match the resolution of the prediction grid and ensure spatial consistency in the modelling outputs. See this [Generating prediction points](https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling/blob/main/vignettes/generating_prediction_points.qmd) and [Covariate processing](https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling/blob/main/vignettes/covariate_processing.qmd) vignettes for further details.
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+    
+# Get the prediction region
+source(here::here(
+      "scripts",
+      "02_pipeline",
+      "01_dataPreparation",
+      "02_getPredictionCoords.R"
+    ))
+
+# Get the covariates
+    source(here::here(
+      "scripts",
+      "02_pipeline",
+      "01_dataPreparation",
+      "03_extractCovariates.R"
+    ))
+
+```
+
+Ecosystem-specific predictions are constrained using ecosystem delineation layers (Ecosystem Assets, EA). For forest ecosystems, predictions are limited to areas classified under land cover classes 311–313, while for mountain ecosystems, predictions are restricted to mapped mountain polygons across Norway. This ensures that indicator values are calculated only within ecologically relevant areas.
+
+The indicator is primarily interpreted at aggregated scales, such as regional or national Ecosystem Accounting Areas (EAA), where predictions from BSUs are combined. Although results are generated at fine spatial resolution (100 m), they are most robust and meaningful when summarized across larger spatial units that reduce local variability and align with the regional reference conditions.
+
+
 
 ## 9. Analyses
 
@@ -357,6 +755,1416 @@ Code folding is activated, meaning the code will be hidden by default in the htm
 Caching is also activated (from the top YAML), meaning that rendering to html will be quicker the second time you do it. This will create a folder inside you project folder (called INDICATORID_cache). Sometimes caching created problems because some operations are not rerun when they should be rerun. Try deleting the cash folder and try again.
 
 -->
+
+We refer to these vignettes for details on the model fitted and the calculation of the ecosystem indicators:
+
+- [Bayesian Occupancy Modelling Framework for Breeding Bird Indicators](https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling/blob/main/vignettes/occupancy_modelling.qmd)
+
+- [Calculating Scaled Ecosystem Richness Indicators](https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling/blob/main/vignettes/indicator_estimation.qmd)
+
+### 9.1 Fitting the occupancy models
+
+We fitted a Bayesian occupancy modelling framework for breeding bird monitoring data using the `spOccupancy` package [@doser2022spoccupancy]. This workflow supports single-species and multi-species occupancy models, with optional spatial random effects to account for residual spatial dependence among sampling locations.
+
+The primary objective is to estimate breeding bird indicators while accounting for imperfect detection, spatial autocorrelation, and variation among species or ecological guilds. The specification of occupancy and detection covariates, model fitting, posterior inference, and model evaluation. Both spatial and non-spatial formulations are considered, allowing the framework to be adapted to a range of ecological questions and monitoring designs.
+
+To flexibly fit the models, we write a function `fit_ecosystem_spoccupancy` which routes models according to two user choices:
+
+| `single_species` | `fit_spatial_model` | spOccupancy function |
+| ---------------- | ------------------- | -------------------- |
+| `TRUE`           | `FALSE`             | `PGOcc()`            |
+| `TRUE`           | `TRUE`              | `spPGOcc()`          |
+| `FALSE`          | `FALSE`             | `msPGOcc()`          |
+| `FALSE`          | `TRUE`              | `spMsPGOcc()`        |
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+
+fit_ecosystem_spoccupancy <- function(
+    ecosystemBreedingBird = NULL,
+    ecosystemType         = NULL,
+    maxSpeciesInGrps      = 10,
+
+    occ_covariates = NULL,
+    det_covariates = NULL,
+    species_groupings = NULL,
+
+    site_id_col  = "Route_point_id",
+    species_col  = "Species",
+    year_col     = "Year",
+    count_col    = "TotalCount",
+    lon_col      = "Longitude",
+    lat_col      = "Latitude",
+
+    route_id_col = NULL,
+    point_id_col = NULL,
+
+    use_route_random_effect = FALSE,
+    fill_detection_vals = TRUE,
+
+    covariates_to_scale = NULL,
+    remove_routes_with_missing_coords = TRUE,
+
+    # --- Model type switches ---
+    single_species    = FALSE,   # TRUE -> PGOcc / spPGOcc per species
+    fit_spatial_model = TRUE,    # TRUE -> spatial NNGP variant
+
+    n.batch       = 100,
+    batch.length  = 5,
+    n.burn        = 100,
+    n.thin        = 2,
+    n.chains      = 2,
+    n.neighbors   = 3,
+    n.omp.threads = 2,
+    cov.model     = "exponential",
+
+    fit_models   = TRUE,
+    save_results = FALSE,
+    verbose = FALSE,
+    output_dir   = getwd()
+) {
+
+  # ---------------------------------------------------------------------------
+  # Packages
+  # ---------------------------------------------------------------------------
+
+  pkgs <- c("spOccupancy", "dplyr", "tidyr", "coda", "readxl")
+  for (p in pkgs) {
+    if (!requireNamespace(p, quietly = TRUE)) install.packages(p)
+  }
+  invisible(lapply(pkgs, library, character.only = TRUE))
+
+  # ---------------------------------------------------------------------------
+  # Basic checks
+  # ---------------------------------------------------------------------------
+
+  required_cols <- c(
+    site_id_col, species_col, year_col, count_col,
+    lon_col, lat_col, occ_covariates, det_covariates
+  )
+
+  missing_cols <- setdiff(required_cols, names(ecosystemBreedingBird))
+  if (length(missing_cols) > 0) {
+    stop("These columns are missing from ecosystemBreedingBird: ",
+         paste(missing_cols, collapse = ", "))
+  }
+
+  if (is.null(covariates_to_scale)) {
+    covariates_to_scale <- unique(c(occ_covariates, det_covariates))
+  }
+
+  # ---------------------------------------------------------------------------
+  # Species groupings
+  # ---------------------------------------------------------------------------
+
+  if (!is.null(species_groupings)) {
+    guilds <- sort(unique(species_groupings$broad_guild))
+    guilds <- guilds[!is.na(guilds)]
+
+  } else {
+    speciesCnts <- length(unique(ecosystemBreedingBird[[species_col]]))
+
+    if (single_species) {
+      # One guild per species when fitting individually
+      species_groupings <- data.frame(
+        Species     = unique(ecosystemBreedingBird[[species_col]]),
+        broad_guild = unique(ecosystemBreedingBird[[species_col]]),
+        stringsAsFactors = FALSE
+      )
+
+    } else if (speciesCnts > maxSpeciesInGrps) {
+      species    <- unique(ecosystemBreedingBird[[species_col]])
+      n_groups   <- ceiling(length(species) / maxSpeciesInGrps)
+
+      cat("Splitting", speciesCnts, "species into", n_groups,
+          "groups (max", maxSpeciesInGrps, "each)\n")
+
+      species_groups <- split(
+        species,
+        cut(seq_along(species), breaks = n_groups, labels = FALSE)
+      )
+
+      species_groupings <- do.call(rbind, lapply(seq_along(species_groups), function(i) {
+        data.frame(Species     = species_groups[[i]],
+                   broad_guild = paste("Species group", i),
+                   stringsAsFactors = FALSE)
+      }))
+
+    } else {
+      species_groupings <- data.frame(
+        Species     = unique(ecosystemBreedingBird[[species_col]]),
+        broad_guild = "Species group 1",
+        stringsAsFactors = FALSE
+      )
+    }
+
+    guilds <- sort(unique(species_groupings$broad_guild))
+    guilds <- guilds[!is.na(guilds)]
+  }
+
+  if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+  output_dir <- normalizePath(output_dir, winslash = "/", mustWork = FALSE)
+  # ---------------------------------------------------------------------------
+  # Helper functions
+  # ---------------------------------------------------------------------------
+
+  make_rhs <- function(covariates, use_route_random_effect = FALSE) {
+    rhs <- paste(covariates, collapse = " + ")
+    if (use_route_random_effect) rhs <- paste(rhs, "+ (1 | route_id)")
+    rhs
+  }
+
+  post_summary <- function(samples) {
+    # Handles both matrix (multi-species) and vector/1-col (single-species)
+    if (is.null(dim(samples))) samples <- matrix(samples, ncol = 1)
+    out <- t(apply(samples, 2, function(x) {
+      c(Mean     = mean(x, na.rm = TRUE),
+        SD       = sd(x, na.rm = TRUE),
+        `2.5%`   = quantile(x, 0.025, na.rm = TRUE),
+        `97.5%`  = quantile(x, 0.975, na.rm = TRUE),
+        `Pr(>0)` = mean(x > 0, na.rm = TRUE))
+    }))
+    as.data.frame(out)
+  }
+
+  extract_named_effect <- function(samples, effect_name) {
+    if (is.null(dim(samples))) samples <- matrix(samples, ncol = 1,
+                                                 dimnames = list(NULL, effect_name))
+    sample_names <- colnames(samples)
+    cols <- sample_names[
+      sample_names == effect_name |
+        startsWith(sample_names, paste0(effect_name, "-")) |
+        startsWith(sample_names, effect_name)
+    ]
+    if (length(cols) == 0) return(NULL)
+
+    out         <- post_summary(samples[, cols, drop = FALSE])
+    raw_effect  <- sub("-[^-]+$", "", cols)
+    species     <- sub("^.*-", "", cols)
+    level       <- ifelse(raw_effect == effect_name, NA_character_,
+                          sub(paste0("^", effect_name), "", raw_effect))
+    out$Species   <- species
+    out$effect    <- raw_effect
+    out$covariate <- effect_name
+    out$level     <- level
+    rownames(out) <- NULL
+    out
+  }
+
+  summarize_all_named_effects <- function(samples, covariates, process,
+                                          species_name = NULL) {
+    # For single-species models, samples are vectors/matrices without species suffix
+    if (!is.null(species_name) && !is.null(dim(samples))) {
+      colnames(samples) <- paste0(colnames(samples), "-", species_name)
+    } else if (!is.null(species_name) && is.null(dim(samples))) {
+      samples <- matrix(samples, ncol = length(covariates) + 1)
+      colnames(samples) <- paste0(c("(Intercept)", covariates), "-", species_name)
+    }
+
+    effect_names <- colnames(samples)
+
+    tabs <- lapply(covariates, function(v) {
+      matched_names <- effect_names[
+        effect_names == v |
+          startsWith(effect_names, paste0(v, "-")) |
+          startsWith(effect_names, v)
+      ]
+      if (length(matched_names) == 0) return(NULL)
+
+      dplyr::bind_rows(lapply(matched_names, function(effect_name) {
+        z <- extract_named_effect(samples, effect_name)
+        if (is.null(z)) return(NULL)
+        sp         <- sub("^.*-", "", effect_name)
+        raw_effect <- sub("-[^-]+$", "", effect_name)
+        level      <- ifelse(raw_effect == v, NA_character_,
+                             sub(paste0("^", v), "", raw_effect))
+        z$process   <- process
+        z$covariate <- v
+        z$level     <- level
+        z$Species   <- sp
+        z$effect    <- effect_name
+        z
+      }))
+    })
+    dplyr::bind_rows(tabs)
+  }
+
+  check_rhat <- function(samples, parnames, n.chains) {
+    if (is.null(dim(samples))) samples <- matrix(samples, ncol = 1,
+                                                 dimnames = list(NULL, parnames[1]))
+    chains <- lapply(seq_len(n.chains), function(ch) {
+      idx <- seq(ch, nrow(samples), by = n.chains)
+      coda::as.mcmc(samples[idx, , drop = FALSE])
+    })
+    rhat <- coda::gelman.diag(coda::as.mcmc.list(chains))$psrf
+    #rownames(rhat) <- parnames
+    rhat
+  }
+
+  mode_value <- function(x) {
+    x2 <- x[!is.na(x)]
+    if (length(x2) == 0) return(NA)
+    out <- unique(x2)[which.max(tabulate(match(x2, unique(x2))))]
+    if (is.factor(x)) factor(out, levels = levels(x)) else out
+  }
+
+  all_results <- list()
+
+  # ---------------------------------------------------------------------------
+  # Build survey effort, detection/non-detection array, covariates, and coords
+  # BEFORE filtering to guilds/species
+  # ---------------------------------------------------------------------------
+
+  # This is the key consistency step. The full data set is first converted into a
+  # complete species x site x year detection/non-detection array. For every
+  # surveyed point-year, species without a detection record are assigned 0.
+  # Guild and single-species filtering happens only after this array has been
+  # created, so multi-species and single-species models use the same survey
+  # effort definition.
+
+  survey_dat <- ecosystemBreedingBird %>%
+    dplyr::mutate(
+      Route_point_id = as.character(.data[[site_id_col]]),
+      Species        = as.character(.data[[species_col]]),
+      year_chr       = as.character(.data[[year_col]]),
+      detect         = as.integer(.data[[count_col]] > 0),
+      route_id       = if (is.null(route_id_col))
+        sub("_.*", "", as.character(.data[[site_id_col]]))
+      else as.character(.data[[route_id_col]]),
+      point_id       = if (is.null(point_id_col))
+        sub(".*_", "", as.character(.data[[site_id_col]]))
+      else as.character(.data[[point_id_col]]),
+      Lon = as.numeric(.data[[lon_col]]),
+      Lat = as.numeric(.data[[lat_col]])
+    )
+
+  # ---------------------------------------------------------------------------
+  # Remove routes/sites with missing coordinates once, before any species filter
+  # ---------------------------------------------------------------------------
+
+  routes_with_missing_coords <- character(0)
+
+  if (remove_routes_with_missing_coords) {
+    routes_with_missing_coords <- survey_dat %>%
+      dplyr::filter(is.na(Lon) | is.nan(Lon) | is.na(Lat) | is.nan(Lat)) %>%
+      dplyr::pull(route_id) %>%
+      unique()
+
+    survey_dat <- survey_dat %>%
+      dplyr::filter(!route_id %in% routes_with_missing_coords)
+  } else {
+    survey_dat <- survey_dat %>%
+      dplyr::filter(!is.na(Lon), !is.nan(Lon), !is.na(Lat), !is.nan(Lat))
+  }
+
+  if (nrow(survey_dat) == 0) {
+    stop("All survey-effort data were removed after coordinate filtering.")
+  }
+
+  # ---------------------------------------------------------------------------
+  # Global indexing
+  # ---------------------------------------------------------------------------
+
+  all_points  <- sort(unique(survey_dat$Route_point_id))
+  all_routes  <- sort(unique(survey_dat$route_id))
+  all_years   <- sort(unique(survey_dat$year_chr))
+  all_species <- sort(unique(survey_dat$Species))
+
+  J_all <- length(all_points)
+  R_all <- length(all_years)
+  N_all <- length(all_species)
+
+  message(sprintf(
+    "Global survey frame: Points: %d | Years: %d | Species: %d | Routes: %d",
+    J_all, R_all, N_all, length(all_routes)
+  ))
+
+  # ---------------------------------------------------------------------------
+  # Global detection/non-detection array: species x site x year
+  # ---------------------------------------------------------------------------
+
+  y_all <- array(
+    NA_integer_,
+    dim      = c(N_all, J_all, R_all),
+    dimnames = list(all_species, all_points, all_years)
+  )
+
+  # Place observed detections/non-detections from available species rows.
+  # If repeated records exist for a species-site-year, keep 1 if any record is 1.
+  for (i in seq_len(nrow(survey_dat))) {
+    sp  <- survey_dat$Species[i]
+    pt  <- survey_dat$Route_point_id[i]
+    yr  <- survey_dat$year_chr[i]
+    val <- survey_dat$detect[i]
+
+    cur <- y_all[sp, pt, yr]
+    y_all[sp, pt, yr] <- if (is.na(cur)) val else max(cur, val, na.rm = TRUE)
+  }
+
+  # Survey effort is defined independently of species identity.
+  # Every species receives a 0 at surveyed point-years where it was not detected.
+  visited_point_year_all <- survey_dat %>%
+    dplyr::distinct(Route_point_id, year_chr)
+
+  visited_mat_all <- matrix(
+    FALSE,
+    nrow = J_all,
+    ncol = R_all,
+    dimnames = list(all_points, all_years)
+  )
+
+  visited_idx_all <- visited_point_year_all %>%
+    dplyr::transmute(
+      point_i = match(Route_point_id, all_points),
+      year_i  = match(year_chr, all_years)
+    ) %>%
+    dplyr::filter(!is.na(point_i), !is.na(year_i))
+
+  if (nrow(visited_idx_all) > 0) {
+    visited_mat_all[as.matrix(visited_idx_all)] <- TRUE
+  }
+
+  for (pt in all_points) {
+    for (yr in all_years) {
+      if (visited_mat_all[pt, yr]) {
+        y_all[is.na(y_all[, pt, yr]), pt, yr] <- 0L
+      }
+    }
+  }
+
+  # ---------------------------------------------------------------------------
+  # Global point-level covariate table
+  # ---------------------------------------------------------------------------
+
+  all_covariates <- unique(c(occ_covariates, det_covariates))
+
+  point_info <- survey_dat %>%
+    dplyr::group_by(Route_point_id, route_id, point_id, Year) %>%
+    dplyr::summarise(
+      Lon = mean(Lon, na.rm = TRUE),
+      Lat = mean(Lat, na.rm = TRUE),
+      dplyr::across(dplyr::all_of(all_covariates) & where(is.numeric),
+                    ~ mean(.x, na.rm = TRUE)),
+      dplyr::across(dplyr::all_of(all_covariates) &
+                      where(~ is.factor(.x) || is.character(.x)), mode_value),
+      .groups = "drop"
+    ) %>%
+    dplyr::arrange(match(Route_point_id, all_points), Year)
+
+  point_info_raw <- point_info
+
+  scale_existing <- intersect(covariates_to_scale, names(point_info))
+  for (v in scale_existing) {
+    if (is.numeric(point_info[[v]])) point_info[[v]] <- as.numeric(scale(point_info[[v]]))
+  }
+  point_info$route_id <- factor(point_info$route_id)
+
+  # ---------------------------------------------------------------------------
+  # Global occupancy covariates
+  # ---------------------------------------------------------------------------
+
+  occ.covs <- point_info %>%
+    dplyr::group_by(Route_point_id, route_id, point_id) %>%
+    dplyr::summarise(
+      dplyr::across(dplyr::all_of(occ_covariates), ~ {
+        if (is.numeric(.x)) mean(.x, na.rm = TRUE)
+        else if (is.factor(.x) || is.character(.x)) mode_value(.x)
+        else NA
+      }),
+      .groups = "drop"
+    ) %>%
+    dplyr::arrange(match(Route_point_id, all_points))
+
+  if (use_route_random_effect) {
+    occ.covs <- occ.covs %>%
+      dplyr::select(dplyr::all_of(occ_covariates), route_id) %>%
+      dplyr::mutate(route_id = as.numeric(as.factor(route_id)))
+  } else {
+    occ.covs <- occ.covs %>% dplyr::select(dplyr::all_of(occ_covariates))
+  }
+
+  occ.covs <- as.data.frame(occ.covs)
+  rownames(occ.covs) <- all_points
+
+  # ---------------------------------------------------------------------------
+  # Global detection covariates
+  # ---------------------------------------------------------------------------
+  # Detection covariates ---------------------------------------------------------
+
+  if (use_route_random_effect) {
+    point_info <- point_info %>%
+      dplyr::mutate(route_id = as.numeric(as.factor(route_id)))
+
+    detection_covs <- unique(c(det_covariates, "route_id"))
+  } else {
+    detection_covs <- det_covariates
+  }
+
+  fill_row_values <- function(mat, original_vals) {
+    if (!fill_detection_vals) return(mat)
+
+    is_num <- is.numeric(original_vals)
+
+    for (i in seq_len(nrow(mat))) {
+      row_vals <- mat[i, ]
+
+      if (all(is.na(row_vals))) next
+
+      fill_value <- if (is_num) {
+        mean(as.numeric(row_vals), na.rm = TRUE)
+      } else {
+        mode_value(row_vals)
+      }
+
+      mat[i, is.na(row_vals)] <- fill_value
+    }
+
+    mat
+  }
+
+  make_det_cov_matrix <- function(cov_name) {
+    tmp <- point_info %>%
+      dplyr::select(Route_point_id, Year, !!rlang::sym(cov_name)) %>%
+      tidyr::pivot_wider(
+        names_from  = Year,
+        values_from = !!rlang::sym(cov_name)
+      )
+
+    tmp <- tmp[match(all_points, tmp$Route_point_id), ]
+
+    mat <- as.matrix(tmp[, all_years, drop = FALSE])
+    rownames(mat) <- all_points
+
+    mat <- fill_row_values(
+      mat = mat,
+      original_vals = point_info[[cov_name]]
+    )
+
+    mat
+  }
+
+  det.covs <- stats::setNames(
+    lapply(detection_covs, make_det_cov_matrix),
+    detection_covs
+  )
+  # ---------------------------------------------------------------------------
+  # Global coordinates
+  # ---------------------------------------------------------------------------
+
+  point_info_coords <- survey_dat %>%
+    dplyr::group_by(Route_point_id, route_id, point_id) %>%
+    dplyr::summarise(
+      Lon = mean(Lon, na.rm = TRUE),
+      Lat = mean(Lat, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::arrange(match(Route_point_id, all_points))
+
+  coords <- as.matrix(point_info_coords[, c("Lon", "Lat")])
+  rownames(coords) <- all_points
+
+  # ---------------------------------------------------------------------------
+  # Global missingness alignment
+  # ---------------------------------------------------------------------------
+
+  visit_na_all <- is.na(y_all[1, , ])
+
+  for (nm in names(det.covs)) det.covs[[nm]][visit_na_all] <- NA
+
+  y_observed_all <- !is.na(y_all[1, , ])
+  for (nm in names(det.covs)) {
+    bad <- is.na(det.covs[[nm]]) & y_observed_all
+    if (any(bad)) det.covs[[nm]][bad] <- mean(det.covs[[nm]], na.rm = TRUE)
+  }
+
+  stopifnot(all(sapply(det.covs, function(x) identical(dim(x), dim(y_all)[2:3]))))
+
+  site_never_visited_all <- apply(visit_na_all, 1, all)
+  for (nm in names(occ.covs)) occ.covs[site_never_visited_all, nm] <- NA
+
+  site_observed_all <- !site_never_visited_all
+  for (nm in names(occ.covs)) {
+    bad <- is.na(occ.covs[[nm]]) & site_observed_all
+    if (any(bad)) {
+      if (is.numeric(occ.covs[[nm]])) {
+        occ.covs[[nm]][bad] <- mean(occ.covs[[nm]], na.rm = TRUE)
+      } else {
+        occ.covs[[nm]][bad] <- names(which.max(table(occ.covs[[nm]])))
+      }
+    }
+  }
+
+  # ---------------------------------------------------------------------------
+  # Formulas and parameter counts are global because site/year covariates are
+  # now global and identical across model types.
+  # ---------------------------------------------------------------------------
+
+  occ_rhs     <- make_rhs(occ_covariates, use_route_random_effect)
+  det_rhs     <- make_rhs(det_covariates, use_route_random_effect)
+  occ_formula <- as.formula(paste("~", occ_rhs))
+  det_formula <- as.formula(paste("~", det_rhs))
+
+  dists  <- NULL; max_d <- NULL; min_d <- NULL
+  phi_lo <- NULL; phi_hi <- NULL
+
+  if (fit_spatial_model) {
+    dists  <- stats::dist(coords)
+    max_d  <- max(dists)
+    min_d  <- stats::quantile(dists, 0.05)
+    phi_lo <- 3 / max_d
+    phi_hi <- 3 / min_d
+  }
+
+  p_occ <- ncol(model.matrix(occ_formula, data = occ.covs))
+  if (use_route_random_effect) p_occ <- p_occ - 1
+
+  det_cov_df <- as.data.frame(lapply(det.covs, as.vector)) %>%
+    dplyr::mutate(dplyr::across(where(is.character), as.factor))
+  p_det <- ncol(model.matrix(det_formula, data = det_cov_df))
+  if (use_route_random_effect) p_det <- p_det - 1
+
+  # ---------------------------------------------------------------------------
+  # Loop over guilds / species
+  # ---------------------------------------------------------------------------
+
+  for (guild in guilds) {
+
+    message("\n====================================================")
+    message("Ecosystem: ", ecosystemType,
+            " | ", if (single_species) "Species" else "Guild", ": ", guild)
+    message("Model type: ",
+            if (single_species) "Single-species" else "Multi-species",
+            " | ",
+            if (fit_spatial_model) "Spatial" else "Non-spatial")
+    message("====================================================")
+
+    species_in_group <- species_groupings$Species[
+      species_groupings$broad_guild == guild
+    ]
+
+    species <- sort(intersect(species_in_group, dimnames(y_all)[[1]]))
+
+    if (length(species) == 0) {
+      warning("No species in the global survey frame for guild: ", guild)
+      next
+    }
+
+    # Now filter only the already-completed detection/non-detection array.
+    # No survey effort is recomputed inside the guild/species loop.
+    y_full <- y_all[species, , , drop = FALSE]
+
+    dat <- survey_dat %>%
+      dplyr::filter(Species %in% species)
+
+    points <- all_points
+    routes <- all_routes
+    years  <- all_years
+
+    J <- length(points)
+    R <- length(years)
+    N <- length(species)
+
+    message(sprintf("Points: %d | Years: %d | Species: %d | Routes: %d",
+                    J, R, N, length(routes)))
+
+    # =========================================================================
+    # Branch: Single-species vs Multi-species
+    # =========================================================================
+
+    if (single_species) {
+
+      # -----------------------------------------------------------------------
+      # SINGLE-SPECIES: fit one model per species in the guild
+      # -----------------------------------------------------------------------
+
+      guild_species_results <- list()
+
+      for (sp_name in species) {
+
+        message("  Fitting single-species model for: ", sp_name)
+
+        # y is a 2-D matrix (site x year) for a single species
+        y_sp <- y_full[sp_name, , ]
+
+        data.list.sp <- list(
+          y        = y_sp,
+          occ.covs = occ.covs,
+          det.covs = det.covs
+        )
+        if (fit_spatial_model) data.list.sp$coords <- coords
+
+        # Priors
+        priors.sp <- list(
+          beta.normal  = list(mean = rep(0, p_occ), var = rep(2.72, p_occ)),
+          alpha.normal = list(mean = rep(0, p_det), var = rep(2.72, p_det))
+        )
+        if (fit_spatial_model) {
+          # spPGOcc expects plain numeric vectors, not named lists
+          priors.sp$sigma.sq.ig <- c(2, 1)
+          priors.sp$phi.unif    <- c(phi_lo, phi_hi)
+        }
+        if (use_route_random_effect) {
+          priors.sp$sigma.sq.psi.ig <- list(a = 2, b = 0.5)
+        }
+
+        # Initial values
+        z.init.sp <- as.integer(apply(y_sp, 1, function(x) any(x == 1, na.rm = TRUE)))
+
+        inits.sp <- list(
+          beta  = rep(0, p_occ),
+          alpha = rep(0, p_det),
+          z     = z.init.sp
+        )
+        if (fit_spatial_model) {
+          inits.sp$sigma.sq <- 1
+          inits.sp$phi      <- 3 / (max_d / 2)
+        }
+        if (use_route_random_effect) inits.sp$sigma.sq.psi <- 1
+
+        out.sp <- NULL
+
+        if (fit_models) {
+          if (fit_spatial_model) {
+            out.sp <- spOccupancy::spPGOcc(
+              occ.formula   = occ_formula,
+              det.formula   = det_formula,
+              data          = data.list.sp,
+              inits         = inits.sp,
+              priors        = priors.sp,
+              cov.model     = cov.model,
+              NNGP          = TRUE,
+              n.neighbors   = n.neighbors,
+              n.batch       = n.batch,
+              batch.length  = batch.length,
+              n.burn        = n.burn,
+              n.thin        = n.thin,
+              n.chains      = n.chains,
+              n.omp.threads = n.omp.threads,
+              verbose       = verbose,
+              n.report      = max(1, floor(n.batch / 10))
+            )
+          } else {
+            out.sp <- spOccupancy::PGOcc(
+              occ.formula   = occ_formula,
+              det.formula   = det_formula,
+              data          = data.list.sp,
+              inits         = inits.sp,
+              priors        = priors.sp,
+              #n.batch       = n.batch,
+              #batch.length  = batch.length,
+              n.samples     = n.batch * batch.length,
+              n.burn        = n.burn,
+              n.thin        = n.thin,
+              n.chains      = n.chains,
+              n.omp.threads = n.omp.threads,
+              verbose       = verbose#,
+              #n.report      = max(1, floor(n.batch / 10))
+            )
+          }
+        }
+
+        # --- Extract single-species results ---
+        # PGOcc / spPGOcc output shapes differ from the multi-species variants:
+        #   psi.samples  : matrix  (n_iter  x  J)          -- no species dimension
+        #   z.samples    : matrix  (n_iter  x  J)          -- no species dimension
+        #   w.samples    : matrix  (n_iter  x  J)          -- spatial only, no species dim
+        #   beta.samples : matrix  (n_iter  x  p_occ)
+        #   alpha.samples: matrix  (n_iter  x  p_det)
+        #   ppcOcc       : no $sp.names field
+        sp_products <- list()
+
+        if (!is.null(out.sp)) {
+
+          ppc.sp  <- spOccupancy::ppcOcc(out.sp, fit.stat = "freeman-tukey", group = 1)
+          bp_sp   <- mean(ppc.sp$fit.y.rep > ppc.sp$fit.y, na.rm = TRUE)
+          waic.sp <- spOccupancy::waicOcc(out.sp)
+
+          # ppc summary — single-species ppcOcc has no $sp.names; inject species name
+          ppc_df.sp <- data.frame(
+            ecosystem  = ecosystemType,
+            guild      = guild,
+            Species    = sp_name,
+            bayesian_p = bp_sp,
+            row.names  = NULL
+          )
+
+          # Coefficient summaries
+          beta_summary            <- post_summary(out.sp$beta.samples)
+          beta_summary$parameter  <- colnames(out.sp$beta.samples)
+
+          alpha_summary           <- post_summary(out.sp$alpha.samples)
+          alpha_summary$parameter <- colnames(out.sp$alpha.samples)
+
+          # Name columns to match multi-species "-Species" convention for helpers
+          beta_named  <- out.sp$beta.samples
+          alpha_named <- out.sp$alpha.samples
+          colnames(beta_named)  <- paste0(colnames(out.sp$beta.samples),  "-", sp_name)
+          colnames(alpha_named) <- paste0(colnames(out.sp$alpha.samples), "-", sp_name)
+
+          occ_effects <- summarize_all_named_effects(beta_named,  occ_covariates, "occupancy")
+          det_effects <- summarize_all_named_effects(alpha_named, det_covariates, "detection")
+
+          # Spatial parameters (sigma^2, phi, effective range)
+          spatial_params <- NULL
+          if (fit_spatial_model && !is.null(out.sp$theta.samples)) {
+            # theta.samples for spPGOcc: columns named "sigma.sq" and "phi"
+            theta_m    <- colMeans(out.sp$theta.samples)
+            sigma_mean <- theta_m[grep("sigma.sq", names(theta_m))]
+            phi_mean   <- theta_m[grep("^phi",     names(theta_m))]
+            spatial_params <- data.frame(
+              ecosystem = ecosystemType,
+              guild     = guild,
+              Species   = sp_name,
+              sigma_sq  = sigma_mean,
+              phi       = phi_mean,
+              eff_range = 3 / phi_mean,
+              row.names = NULL
+            )
+          }
+
+          # ------------------------------------------------------------------
+          # Occupancy probability (psi): matrix (n_iter x J) for single-species
+          # ------------------------------------------------------------------
+          psi.mean.sp <- colMeans(out.sp$psi.samples)          # length-J vector
+          names(psi.mean.sp) <- points
+
+          psi.ci.sp <- apply(                                   # 2 x J matrix
+            out.sp$psi.samples, 2,
+            function(x) stats::quantile(x, c(0.025, 0.975))
+          )
+          colnames(psi.ci.sp) <- points
+
+          psi_long.sp <- data.frame(
+            Species   = sp_name,
+            Point     = points,
+            psi_mean  = psi.mean.sp,
+            psi_lwr   = psi.ci.sp["2.5%",  ],
+            psi_upr   = psi.ci.sp["97.5%", ],
+            ecosystem = ecosystemType,
+            guild     = guild,
+            row.names = NULL
+          ) %>%
+            dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+
+          # ------------------------------------------------------------------
+          # Latent occupancy state (z): matrix (n_iter x J) for single-species
+          # Gives posterior probability of true occupancy at each site.
+          # ------------------------------------------------------------------
+          z.mean.sp <- colMeans(out.sp$z.samples)               # length-J vector
+          names(z.mean.sp) <- points
+
+          z.ci.sp <- apply(
+            out.sp$z.samples, 2,
+            function(x) stats::quantile(x, c(0.025, 0.975))
+          )
+          colnames(z.ci.sp) <- points
+
+          z_long.sp <- data.frame(
+            Species   = sp_name,
+            Point     = points,
+            z_mean    = z.mean.sp,
+            z_lwr     = z.ci.sp["2.5%",  ],
+            z_upr     = z.ci.sp["97.5%", ],
+            ecosystem = ecosystemType,
+            guild     = guild,
+            row.names = NULL
+          ) %>%
+            dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+
+          # ------------------------------------------------------------------
+          # Spatial random effect (w): matrix (n_iter x J) for spPGOcc,
+          # NULL for non-spatial PGOcc.
+          # ------------------------------------------------------------------
+          w.mean.sp <- NULL
+          w_long.sp <- NULL
+
+          if (fit_spatial_model && !is.null(out.sp$w.samples)) {
+            # w.samples for spPGOcc: matrix (n_iter x J)
+            w.mean.sp        <- colMeans(out.sp$w.samples)
+            names(w.mean.sp) <- points
+
+            w_long.sp <- data.frame(
+              Species   = sp_name,
+              Point     = points,
+              w_mean    = w.mean.sp,
+              ecosystem = ecosystemType,
+              guild     = guild,
+              row.names = NULL
+            ) %>%
+              dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+          }
+
+          # Convergence diagnostics
+          rhat_beta <- tryCatch(
+            check_rhat(out.sp$beta.samples,
+                       c("(Intercept)", occ_covariates), n.chains),
+            error = function(e) NULL
+          )
+          rhat_alpha <- tryCatch(
+            check_rhat(out.sp$alpha.samples,
+                       c("(Intercept)", det_covariates), n.chains),
+            error = function(e) NULL
+          )
+
+          sp_products <- list(
+            model          = out.sp,
+            ppc            = ppc.sp,
+            ppc_species    = ppc_df.sp,       # consistent name with multi-species
+            ppc_overall    = bp_sp,
+            waic           = waic.sp,
+            beta_summary   = beta_summary,
+            alpha_summary  = alpha_summary,
+            occ_effects    = occ_effects,
+            det_effects    = det_effects,
+            spatial_params = spatial_params,
+            psi_mean       = psi.mean.sp,     # named length-J vector
+            psi_ci         = psi.ci.sp,       # 2 x J matrix
+            psi_long       = psi_long.sp,     # long df with lwr/upr
+            z_mean         = z.mean.sp,       # named length-J vector
+            z_ci           = z.ci.sp,         # 2 x J matrix
+            z_long         = z_long.sp,       # long df with lwr/upr
+            w_mean         = w.mean.sp,       # named length-J vector or NULL
+            w_long         = w_long.sp,       # long df or NULL
+            rhat_beta      = rhat_beta,
+            rhat_alpha     = rhat_alpha
+          )
+        }
+
+        guild_species_results[[sp_name]] <- list(
+          species      = sp_name,
+          guild        = guild,
+          ecosystem    = ecosystemType,
+          points       = points,
+          routes       = routes,
+          years        = years,
+          dims         = list(J = J, R = R),
+          formulas     = list(occ_formula = occ_formula, det_formula = det_formula),
+          fit_spatial_model = fit_spatial_model,
+          single_species    = TRUE,
+          data_used    = dat %>% dplyr::filter(Species == sp_name),
+          data_list    = data.list.sp,
+          coords       = coords,
+          priors       = priors.sp,
+          inits        = inits.sp,
+          model_products = sp_products
+        )
+
+        if (save_results) {
+          saveRDS(
+            guild_species_results[[sp_name]],
+            file = file.path(output_dir,
+                             paste0("spPGOcc_", ecosystemType, "_",
+                                    gsub("[^A-Za-z0-9]+", "_", sp_name), ".rds"))
+          )
+        }
+      } # end species loop
+
+      all_results[[guild]] <- guild_species_results
+
+    } else {
+
+      # =======================================================================
+      # MULTI-SPECIES: original path
+      # =======================================================================
+
+      data.list <- list(
+        y        = y_full,
+        occ.covs = occ.covs,
+        det.covs = det.covs
+      )
+      if (fit_spatial_model) data.list$coords <- coords
+
+      priors <- list(
+        beta.comm.normal  = list(mean = rep(0, p_occ), var = rep(2.72, p_occ)),
+        tau.sq.beta.ig    = list(a = 0.1, b = 0.1),
+        alpha.comm.normal = list(mean = rep(0, p_det), var = rep(2.72, p_det)),
+        tau.sq.alpha.ig   = list(a = 0.1, b = 0.1)
+      )
+      if (fit_spatial_model) {
+        priors$sigma.sq.ig <- list(a = 2, b = 1)
+        priors$phi.unif    <- list(a = phi_lo, b = phi_hi)
+      }
+      if (use_route_random_effect) priors$sigma.sq.psi.ig <- list(a = 2, b = 0.5)
+
+      z.init <- apply(y_full, c(1, 2), function(x) as.integer(any(x == 1, na.rm = TRUE)))
+      inits  <- list(
+        beta.comm    = rep(0, p_occ),
+        alpha.comm   = rep(0, p_det),
+        tau.sq.beta  = rep(1, p_occ),
+        tau.sq.alpha = rep(1, p_det),
+        z            = z.init
+      )
+      if (fit_spatial_model) {
+        inits$sigma.sq <- rep(1, N)
+        inits$phi      <- rep(3 / (max_d / 2), N)
+      }
+      if (use_route_random_effect) inits$sigma.sq.psi <- 1
+
+      out <- NULL
+
+      if (fit_models) {
+        message("Fitting model for guild: ", guild)
+
+        if (fit_spatial_model) {
+          out <- spOccupancy::spMsPGOcc(
+            occ.formula   = occ_formula,
+            det.formula   = det_formula,
+            data          = data.list,
+            inits         = inits,
+            priors        = priors,
+            cov.model     = cov.model,
+            NNGP          = TRUE,
+            n.neighbors   = n.neighbors,
+            n.batch       = n.batch,
+            batch.length  = batch.length,
+            n.burn        = n.burn,
+            n.thin        = n.thin,
+            n.chains      = n.chains,
+            n.omp.threads = n.omp.threads,
+            verbose       = verbose,
+            n.report      = max(1, floor(n.batch / 10))
+          )
+        } else {
+          out <- spOccupancy::msPGOcc(
+            occ.formula   = occ_formula,
+            det.formula   = det_formula,
+            data          = data.list,
+            inits         = inits,
+            priors        = priors,
+            #n.batch       = n.batch,
+            #batch.length  = batch.length,
+            n.samples = batch.length * n.batch,
+            n.burn        = n.burn,
+            n.thin        = n.thin,
+            n.chains      = n.chains,
+            n.omp.threads = n.omp.threads,
+            verbose       = verbose#,
+            #n.report      = max(1, floor(n.batch / 10))
+          )
+        }
+      }
+
+      # -----------------------------------------------------------------------
+      # Extract multi-species model products (original logic, unchanged)
+      # -----------------------------------------------------------------------
+
+      model_products <- list()
+
+      if (!is.null(out)) {
+
+        ppc <- spOccupancy::ppcOcc(out, fit.stat = "freeman-tukey", group = 1)
+        bp_species <- colMeans(ppc$fit.y.rep > ppc$fit.y, na.rm = TRUE)
+        bp_overall <- mean(ppc$fit.y.rep > ppc$fit.y, na.rm = TRUE)
+        waic       <- spOccupancy::waicOcc(out)
+
+        beta_comm_summary           <- post_summary(out$beta.comm.samples)
+        beta_comm_summary$parameter <- c("(Intercept)", occ_covariates)
+
+        alpha_comm_summary           <- post_summary(out$alpha.comm.samples)
+        alpha_comm_summary$parameter <- c("(Intercept)", det_covariates)
+
+        occ_effects <- summarize_all_named_effects(
+          out$beta.samples, occ_covariates, "occupancy")
+        det_effects <- summarize_all_named_effects(
+          out$alpha.samples, det_covariates, "detection")
+
+        spatial_params <- NULL
+        if (fit_spatial_model && !is.null(out$theta.samples)) {
+          sigma_cols <- grep("^sigma.sq-", colnames(out$theta.samples), value = TRUE)
+          phi_cols   <- grep("^phi-",      colnames(out$theta.samples), value = TRUE)
+          if (length(sigma_cols) > 0 && length(phi_cols) > 0) {
+            sigma_mean <- colMeans(out$theta.samples[, sigma_cols, drop = FALSE])
+            phi_mean   <- colMeans(out$theta.samples[, phi_cols,   drop = FALSE])
+            spatial_params <- data.frame(
+              ecosystem = ecosystemType,
+              guild     = guild,
+              Species   = sub("^sigma.sq-", "", sigma_cols),
+              sigma_sq  = sigma_mean,
+              phi       = phi_mean,
+              eff_range = 3 / phi_mean,
+              row.names = NULL
+            )
+          }
+        }
+
+        # ------------------------------------------------------------------
+        # Occupancy probability (psi): 4-D array (n_iter x N x J x 1) -> use
+        # apply over dims 2 & 3 (species x site).  psi.samples for msPGOcc /
+        # spMsPGOcc has shape (n_iter x N x J).
+        # ------------------------------------------------------------------
+        psi.mean <- apply(out$psi.samples, c(2, 3), mean)       # N x J
+        dimnames(psi.mean) <- list(species, points)
+
+        psi.lwr <- apply(out$psi.samples, c(2, 3),              # N x J
+                         function(x) stats::quantile(x, 0.025))
+        psi.upr <- apply(out$psi.samples, c(2, 3),
+                         function(x) stats::quantile(x, 0.975))
+        dimnames(psi.lwr) <- dimnames(psi.upr) <- list(species, points)
+
+        # Keep the full 3-D CI array for downstream use (2 x N x J)
+        psi.ci <- apply(out$psi.samples, c(2, 3),
+                        function(x) stats::quantile(x, c(0.025, 0.975)))
+
+        # ------------------------------------------------------------------
+        # Spatial random effect (w): 3-D array (n_iter x N x J) for spMsPGOcc
+        # ------------------------------------------------------------------
+        w.mean <- NULL
+        if (fit_spatial_model && !is.null(out$w.samples)) {
+          w.mean <- apply(out$w.samples, c(2, 3), mean)          # N x J
+          dimnames(w.mean) <- list(species, points)
+        }
+
+        # ------------------------------------------------------------------
+        # Latent occupancy state (z): 3-D array (n_iter x N x J)
+        # z_mean gives the posterior probability of true occupancy per species x site.
+        # Summing over species gives species richness.
+        # ------------------------------------------------------------------
+        z.mean <- apply(out$z.samples, c(2, 3), mean)            # N x J
+        dimnames(z.mean) <- list(species, points)
+
+        z.lwr <- apply(out$z.samples, c(2, 3),
+                       function(x) stats::quantile(x, 0.025))
+        z.upr <- apply(out$z.samples, c(2, 3),
+                       function(x) stats::quantile(x, 0.975))
+        dimnames(z.lwr) <- dimnames(z.upr) <- list(species, points)
+
+        # Richness: sum occupied species per site across posterior draws
+        richness.samples <- apply(out$z.samples, c(1, 3), sum)   # n_iter x J
+        richness.mean    <- colMeans(richness.samples)
+        richness.ci      <- apply(richness.samples, 2,
+                                  function(x) stats::quantile(x, c(0.025, 0.975)))
+        names(richness.mean) <- points
+
+        richness_df <- data.frame(
+          ecosystem      = ecosystemType,
+          guild          = guild,
+          Point          = points,
+          Route          = point_info_coords$route_id,
+          Lon            = point_info_coords$Lon,
+          Lat            = point_info_coords$Lat,
+          richness_mean  = richness.mean,
+          richness_lwr   = richness.ci[1, ],
+          richness_upr   = richness.ci[2, ],
+          row.names      = NULL
+        ) %>%
+          dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+
+        # psi long: include lower and upper CIs for consistency with single-species
+        psi_long <- as.data.frame(as.table(psi.mean)) %>%
+          dplyr::rename(Species = Var1, Point = Var2, psi_mean = Freq) %>%
+          dplyr::left_join(
+            as.data.frame(as.table(psi.lwr)) %>%
+              dplyr::rename(Species = Var1, Point = Var2, psi_lwr = Freq),
+            by = c("Species", "Point")
+          ) %>%
+          dplyr::left_join(
+            as.data.frame(as.table(psi.upr)) %>%
+              dplyr::rename(Species = Var1, Point = Var2, psi_upr = Freq),
+            by = c("Species", "Point")
+          ) %>%
+          dplyr::mutate(ecosystem = ecosystemType, guild = guild) %>%
+          dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+
+        # z long: posterior mean occupancy state per species x site
+        z_long <- as.data.frame(as.table(z.mean)) %>%
+          dplyr::rename(Species = Var1, Point = Var2, z_mean = Freq) %>%
+          dplyr::left_join(
+            as.data.frame(as.table(z.lwr)) %>%
+              dplyr::rename(Species = Var1, Point = Var2, z_lwr = Freq),
+            by = c("Species", "Point")
+          ) %>%
+          dplyr::left_join(
+            as.data.frame(as.table(z.upr)) %>%
+              dplyr::rename(Species = Var1, Point = Var2, z_upr = Freq),
+            by = c("Species", "Point")
+          ) %>%
+          dplyr::mutate(ecosystem = ecosystemType, guild = guild) %>%
+          dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+
+        w_long <- NULL
+        if (!is.null(w.mean)) {
+          w_long <- as.data.frame(as.table(w.mean)) %>%
+            dplyr::rename(Species = Var1, Point = Var2, w_mean = Freq) %>%
+            dplyr::mutate(ecosystem = ecosystemType, guild = guild) %>%
+            dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
+        }
+
+        ppc_df <- data.frame(
+          ecosystem  = ecosystemType,
+          guild      = guild,
+          Species    = ppc$sp.names,
+          bayesian_p = bp_species,
+          row.names  = NULL
+        )
+
+        rhat_beta_comm <- tryCatch(
+          check_rhat(out$beta.comm.samples, c("(Intercept)", occ_covariates), n.chains),
+          error = function(e) NULL)
+        rhat_alpha_comm <- tryCatch(
+          check_rhat(out$alpha.comm.samples, c("(Intercept)", det_covariates), n.chains),
+          error = function(e) NULL)
+
+        model_products <- list(
+          model               = out,
+          ppc                 = ppc,
+          ppc_species         = ppc_df,
+          ppc_overall         = bp_overall,
+          waic                = waic,
+          beta_comm_summary   = beta_comm_summary,
+          alpha_comm_summary  = alpha_comm_summary,
+          occ_effects         = occ_effects,
+          det_effects         = det_effects,
+          spatial_params      = spatial_params,
+          psi_mean            = psi.mean,       # N x J matrix
+          psi_ci              = psi.ci,          # 2 x N x J array
+          psi_long            = psi_long,        # long df with psi_lwr/psi_upr
+          z_mean              = z.mean,          # N x J matrix
+          z_long              = z_long,          # long df with z_lwr/z_upr
+          w_mean              = w.mean,          # N x J matrix or NULL
+          w_long              = w_long,
+          richness_samples    = richness.samples,
+          richness_mean       = richness.mean,
+          richness_ci         = richness.ci,
+          richness_df         = richness_df,
+          rhat_beta_comm      = rhat_beta_comm,
+          rhat_alpha_comm     = rhat_alpha_comm
+        )
+      }
+
+      all_results[[guild]] <- list(
+        ecosystem                    = ecosystemType,
+        guild                        = guild,
+        species                      = species,
+        points                       = points,
+        routes                       = routes,
+        years                        = years,
+        dims                         = list(N = N, J = J, R = R),
+        removed_routes_missing_coords = routes_with_missing_coords,
+        formulas    = list(occ_formula = occ_formula, det_formula = det_formula),
+        fit_spatial_model = fit_spatial_model,
+        single_species    = FALSE,
+        data_used         = dat,
+        data_list         = data.list,
+        point_info_raw    = point_info_raw,
+        point_info_model  = point_info,
+        coords            = coords,
+        priors            = priors,
+        inits             = inits,
+        model_products    = model_products
+      )
+
+      if (save_results) {
+        saveRDS(
+          all_results[[guild]],
+          file = file.path(output_dir,
+                           paste0("spMsPGOcc_", ecosystemType, "_",
+                                  gsub("[^A-Za-z0-9]+", "_", guild), ".rds"))
+        )
+      }
+    } # end multi-species branch
+
+    # Pause for 30 seconds between models
+    Sys.sleep(30)
+  } # end guild loop
+
+  # ---------------------------------------------------------------------------
+  # Combine across guilds
+  # ---------------------------------------------------------------------------
+
+  if (single_species) {
+    # Flatten the nested list (guild -> species -> products) into combined tables
+
+    all_sp_results <- unlist(all_results, recursive = FALSE)
+
+    get_ss_prod <- function(x, nm) {
+      if (length(x$model_products) == 0) return(NULL)
+      x$model_products[[nm]]
+    }
+
+    combined <- list(
+      psi                    = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "psi_long")),
+      z                      = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "z_long")),
+      spatial_random_effects = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "w_long")),
+      ppc                    = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "ppc_species")),
+      spatial_params         = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "spatial_params")),
+      occ_effects            = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "occ_effects")),
+      det_effects            = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "det_effects"))
+    )
+
+  } else {
+    get_prod <- function(x, nm) {
+      if (length(x$model_products) == 0) return(NULL)
+      x$model_products[[nm]]
+    }
+
+    combined <- list(
+      richness               = dplyr::bind_rows(lapply(all_results, get_prod, "richness_df")),
+      psi                    = dplyr::bind_rows(lapply(all_results, get_prod, "psi_long")),
+      z                      = dplyr::bind_rows(lapply(all_results, get_prod, "z_long")),
+      spatial_random_effects = dplyr::bind_rows(lapply(all_results, get_prod, "w_long")),
+      ppc                    = dplyr::bind_rows(lapply(all_results, get_prod, "ppc_species")),
+      spatial_params         = dplyr::bind_rows(lapply(all_results, get_prod, "spatial_params")),
+      occ_effects            = dplyr::bind_rows(lapply(all_results, get_prod, "occ_effects")),
+      det_effects            = dplyr::bind_rows(lapply(all_results, get_prod, "det_effects"))
+    )
+  }
+
+  return(list(
+    ecosystem         = ecosystemType,
+    single_species    = single_species,
+    fit_spatial_model = fit_spatial_model,
+    occ_covariates    = occ_covariates,
+    det_covariates    = det_covariates,
+    guild_results     = all_results,
+    combined          = combined
+  ))
+}
+```
+
+### 9.2 Preidting over ecosystem region
+
+After fitting the models, we predict over the relevant ecosystem region.
+```{r}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+    if (runPredictions) {
+      source(here::here(
+        "scripts",
+        "02_pipeline",
+        "02_modelFit",
+        "02_predictions.R"
+      ))
+    }
+```
+
+
+### 9.3 Estimating expected species richness
+
+#### 9.3.1 Load biogeographic regions
+
+Biogeographic regions are used to summarize indicators regionally. The source shapefile is read, aligned with the Norway boundary, transformed to the model coordinate reference system, and saved as a GeoParquet file for subsequent analyses.
+
+```r
+bio_regions <- get_biogeographic_region(
+  input_file = file.path(
+    geoSpatFolder,
+    "BiogeographicalRegions",
+    "Norway_Biogeography",
+    "Original",
+    "biogeografiske_regioner_omrade.shp"
+  ),
+  norway_boundary = norway_boundary,
+  modelCrs = modelCrs,
+  output_file = file.path(
+    dataFolder,
+    "processedData",
+    "biogeographic_regions",
+    "biogeographic_regions.parquet"
+  ),
+  overwrite = FALSE
+)
+```
+
+#### 9.3.2 Load protected areas
+
+Protected areas are used as proxies for reference conditions. These areas are assumed to represent relatively intact ecosystems and provide benchmarks against which ecosystem condition can be evaluated. The protected-area layer is read from the NINA geodatabase, harmonised with the Norway boundary and model coordinate reference system, and saved as a GeoParquet file.
+
+```r
+protected_regions <- get_protected_areas(
+  input_file = file.path(
+    geoSpatFolder,
+    "ProtectedSites",
+    "Norway_ProtectedAreas",
+    "Original",
+    "Natur_Vern_norge_med_svalbard_25833.gdb"
+  ),
+  norway_boundary = norway_boundary,
+  modelCrs = modelCrs,
+  output_file = file.path(
+    dataFolder,
+    "processedData",
+    "protected_regions",
+    "protected_regions.parquet"
+  ),
+  layer = "Naturvernområde",
+  overwrite = FALSE
+)
+```
+
+#### 9.3.3 Calculate scaled ecosystem expected richness
+
+The function `calculate_scaled_ecosystem_richness()` reads species prediction outputs, extracts predicted occupancy values, calculates expected richness, and scales richness relative to protected-area reference conditions within each biogeographic region.
+
+```r
+scaled_richness <- calculate_scaled_ecosystem_richness(
+  input_dir = path_to_predictions,
+  reference_shape = protected_regions,
+  categorisation_shape = bio_regions,
+  ecosystem_type = ecosystemType,
+  value_col = indicator_col,
+  point_spacing = aggregation_spacing,
+  forest_only_strict = ecosystemType == "Forest",
+  na.rm = TRUE,
+  output_dir = path_to_indicators,
+  save_outputs = TRUE,
+  overwrite = FALSE
+)
+```
+
+For forest ecosystems, the workflow can restrict the reference condition to protected forest ecosystems. When `forest_only_strict = TRUE`, only protected areas classified as national parks or nature reserves and designated as forest protection areas are retained.
+
+#### 9.3.4 Reference value extraction
+
+Reference conditions provide the benchmark against which ecosystem condition is evaluated. In this workflow, protected areas are assumed to approximate reference ecological conditions for forest ecosystems. Thus, the reference values represent the best available contemporary conditions rather than pristine or historical states.
+
+Reference values for forest ecosystems are estimated by generating a regular grid of points within protected-area polygons. Species occupancy predictions are then extracted at those points. The helper function `extract_species_values_at_reference()` supports both `sf` objects and `terra::SpatRaster` prediction layers. For vector predictions, values are assigned using nearest-feature matching, whereas raster predictions are extracted directly from the corresponding grid cells.
+
+The resulting object contains predicted occupancy values for each species at all reference points. Species names are stored as separate columns using standardized column names.
+
+#### 9.3.5 Expected richness
+
+Expected richness is calculated as the sum of predicted occupancy probabilities across species:
+
+```r
+expected_richness = rowSums(species_prediction_values, na.rm = TRUE)
+```
+
+This approach provides a continuous estimate of richness in which each species contributes proportionally to its predicted occupancy probability rather than through binary presence or absence. Consequently, expected richness can be interpreted as the expected number of species occurring at a location.
+
+#### 9.3.6 Regional reference richness
+
+Expected richness values extracted from protected areas are summarized within each biogeographic region. The maximum expected richness observed among reference points is used as the regional reference value:
+
+```r
+reference_richness = max_expected_richness
+```
+
+This creates a region-specific benchmark against which all grid cells within the same biogeographic region are evaluated. Using region-specific reference values accounts for natural variation in species richness across environmental gradients and avoids comparing ecosystems with inherently different biodiversity potentials.
+
+#### 9.3.7 Scaling richness
+
+Scaled richness is calculated as
+
+$$
+\text{Scaled richness} =
+\frac{
+R_i-R_{\min}
+}{
+R_{\mathrm{ref},r}-R_{\min}
+},
+$$
+
+where $R_i$ is the expected richness at location $i$, $R_{\min}$ is the minimum expected richness observed across the prediction domain, and $R_{\mathrm{ref},r}$ is the regional reference richness derived from protected areas in biogeographic region $r$.
+
+Scaled richness values are constrained to the interval $[0,1]$, where:
+
+* values close to $1$ indicate richness approaching the best reference conditions observed in the region;
+* values close to $0$ indicate low richness relative to both the regional reference condition and the lower bound of the study area.
 
 ## 10. Results
 
@@ -387,16 +2195,16 @@ Optional: Display the code (don't execute it) or the workflow for exporting the 
 
 **CRediT statement**
 
-* Conceptualization: [Initials]
-* Methodology: [Initials]
+* Conceptualization: [KPA, Initials]
+* Methodology: [KPA, Initials]
 * Data curation: [Initials]
-* Formal analysis: [Initials]
-* Investigation: [Initials]
-* Software: [Initials]
-* Validation: [Initials]
-* Visualization: [Initials]
+* Formal analysis: [KPA, Initials]
+* Investigation: [KPA, Initials]
+* Software: [KPA, Initials]
+* Validation: [KPA, Initials]
+* Visualization: [KPA, Initials]
 * Resources: [Initials]
-* Writing – original draft: [Initials]
+* Writing – original draft: [KPA, Initials]
 * Writing – review & editing: [Initials]
 * Supervision: [Initials]
 * Project administration: [Initials]
@@ -417,13 +2225,13 @@ Field data were collected by [AB, EF] between [years]. Sampling protocol was dev
 DNA extraction was performed by [GH]. Sequencing was conducted by [IJ].
 
 **Data processing**
-Raw data were curated and cleaned by [EF]. Code for preprocessing was written by [KL].
+Raw data were curated and cleaned by [DPJ]. Code for preprocessing was written by [KL].
 
 **Statistical analysis**
-All analyses were conducted by [CD] using [software], with verification by [AB].
+All analyses were conducted by [KPA, ] using `spOccupancy`, with verification by [AB].
 
 **Visualization**
-Figures were produced by [KL], with input from [CD].
+Figures were produced by [KPA, ], with input from [CD].
 
 **Reproducibility**
 All code was reviewed and validated by [AB, CD].
