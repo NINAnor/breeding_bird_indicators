@@ -1,8 +1,8 @@
 ---
 title: "Breeding bird indicators"
 subtitle: |
-  [INDICATORID] (Forests) \
-  [INDICATORID2] (Mountains)  
+  [NO_BIRD_002] (Mountains) \
+  [NO_BIRD_004] (Forests)  
 # delete the line with the second indicatorID (line 5) 
 # if it's not relevant for you.
 # In the parentheses you can add a word to distinguish multiple indicators 
@@ -20,17 +20,18 @@ indicatorID:
 # same realm, same country etc., then you only need to write the realm and
 # country once. 
 indicatorName: 
-  - INDICATOR_NAME # add more by adding another line starting '-'
+  - Breeding birds # add more by adding another line starting '-'
 verbatimName: 
   - VERBATIM_INDICATOR_NAME # the indicator name that us used in the native language
 folderName: XXX_YYY_ZZZ # Leave to be filled out by ecRxiv during typesetting (name of the folder under 'indicators/'). 
 # If it's a single indicator being reported, the folder name should be the same as the indicatorID. 
 # If there are multiple ID's then the folder name could look something like XX_YYY_ZZZ-ÅÅÅ.
-country: Norwy
+country: Norway
 continent: Europe
-ECT: write ECT here # e.g. A2 - Chemical State characteristics
+ECT: B1 - Compositional State Characteristics # e.g. A2 - Chemical State characteristics
 Realm: # Please copy and paste Realms, Biomes and Ecostsem names from here: https://github.com/NINAnor/ecRxiv/wiki#ecosystem-typology 
-  - write realm here # e.g. Freshwater (F)
+  - Terrestrial (T)
+  - Terrestrial (T) # e.g. Freshwater (F)
 Biome: 
   - write biome here # e.g. F1 Rivers and streams biome
 Ecosystem: 
@@ -39,13 +40,13 @@ verbatimEcosystem: # add name of the ecosystem or naturetype according to any re
 yearAdded: 2026 # the year when the indicator was first submitted to ecRxiv
 yearLastUpdate: 2026
 status: incomplete # options are complete, incomplete, or deprecated
-Version: "0.1.0" # See wiki page: https://github.com/NINAnor/ecRxiv/wiki#versioning
-VersionComment: Comment here # Describe briefly how this version differs from earlier versions 
+Version: "1.1.0" # See wiki page: https://github.com/NINAnor/ecRxiv/wiki#versioning
+VersionComment: "Update of https://github.com/NINAnor/ecRxiv/tree/main/indicators/NO_BIRD_001-004 bys using occupancy modelling instead of TRIM analysis."# Describe briefly how this version differs from earlier versions 
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 # To be filled out by ecRxiv during the typesetting, when they will replace XX_YYYY_ZZ with the name of the root folder for the current indicator(s). It should be the same as the indicatorID, but if there are more indicator IDs presented in the same folder, the folder name might be different, e.g. XX_YYYY_AAA-BBB 
 Normalised: # Yes or no depending on whether the metric has been normliased or not.
 SpatialAggregationPathway: Describe the aggregation using the standrdaise terminology # e.g. Scale - Transform - Aggregate (length-weighted arithmetic mean) - Truncate
-Precision: #Describe the precition metric you have used. Precision may be reported either as variation among observed values (e.g. standard deviation, variance, range, interquartile range) or as uncertainty around an estimated value (e.g. standard error, confidence interval, credible interval). 
+Precision: Credible interval #Describe the precition metric you have used. Precision may be reported either as variation among observed values (e.g. standard deviation, variance, range, interquartile range) or as uncertainty around an estimated value (e.g. standard error, confidence interval, credible interval). 
 format: 
   html:
     embed-resources: true
