@@ -831,6 +831,18 @@ To flexibly fit the models, we write a function `fit_ecosystem_spoccupancy` whic
     }
 ```
 
+The following candidate models were fitted for each ecosystem:
+
+| Candidate model | `single_species` | `fit_spatial_model` | Route random effect |
+|:----------------|-----------------:|--------------------:|:--------------------|
+| 1 | `TRUE`  | `FALSE` | No  |
+| 2 | `TRUE`  | `FALSE` | Yes |
+| 3 | `TRUE`  | `TRUE`  | No  |
+| 4 | `TRUE`  | `TRUE`  | Yes |
+| 5 | `FALSE` | `FALSE` | No  |
+| 6 | `FALSE` | `FALSE` | Yes |
+| 7 | `FALSE` | `TRUE`  | No  |
+| 8 | `FALSE` | `TRUE`  | Yes |
 
 #### 9.1.1 Model selection
 
