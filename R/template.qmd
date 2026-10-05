@@ -8,8 +8,8 @@ subtitle: |
 # In the parentheses you can add a word to distinguish multiple indicators 
 # from each other, for example the ecosystem type that they cover
 indicatorID: 
-  - INDICATORID
-  - INDICATORID2 # delete whole line if not needed
+  - NO_BIRD_002
+  - NO_BIRD_004 # delete whole line if not needed
 # If you are presenting multiple indicators, and have multiple 
 # indicator IDs, then add them as a list here, and make sure you add
 # the same number of list entries, 
@@ -33,20 +33,22 @@ Realm: # Please copy and paste Realms, Biomes and Ecostsem names from here: http
   - Terrestrial (T)
   - Terrestrial (T) # e.g. Freshwater (F)
 Biome: 
-  - write biome here # e.g. F1 Rivers and streams biome
+  - T2 Temperate-boreal forests and woodlands biome 
+  - T6 Polar-alpine (cryogenic) biome # e.g. F1 Rivers and streams biome
 Ecosystem: 
-  - write ecosystem here # e.g. F1.3 Freeze-thaw streams
+  - T2.1 – Boreal/montane forests
+  - T6.4 – Temperate alpine grasslands  # e.g. F1.3 Freeze-thaw streams
 verbatimEcosystem: Forest; Mountain # add name of the ecosystem or naturetype according to any relevant local or national typology. E.g. fjell, skog, ... 
 yearAdded: 2026 # the year when the indicator was first submitted to ecRxiv
 yearLastUpdate: 2026
-status: incomplete # options are complete, incomplete, or deprecated
+status: complete # options are complete, incomplete, or deprecated
 Version: "1.1.0" # See wiki page: https://github.com/NINAnor/ecRxiv/wiki#versioning
 VersionComment: "Update of https://github.com/NINAnor/ecRxiv/tree/main/indicators/NO_BIRD_001-004 bys using occupancy modelling instead of TRIM analysis."# Describe briefly how this version differs from earlier versions 
 url: https://github.com/NINAnor/ecRxiv/tree/main/indicators/XX_YYYY_ZZZ
 # To be filled out by ecRxiv during the typesetting, when they will replace XX_YYYY_ZZ with the name of the root folder for the current indicator(s). It should be the same as the indicatorID, but if there are more indicator IDs presented in the same folder, the folder name might be different, e.g. XX_YYYY_AAA-BBB 
 Normalised: # Yes or no depending on whether the metric has been normliased or not.
-SpatialAggregationPathway: Describe the aggregation using the standrdaise terminology # e.g. Scale - Transform - Aggregate (length-weighted arithmetic mean) - Truncate
-Precision: Credible interval #Describe the precition metric you have used. Precision may be reported either as variation among observed values (e.g. standard deviation, variance, range, interquartile range) or as uncertainty around an estimated value (e.g. standard error, confidence interval, credible interval). 
+SpatialAggregationPathway: Scale - Truncate - Aggregate # e.g. Scale - Transform - Aggregate (length-weighted arithmetic mean) - Truncate
+Precision: Bootstrap 95% interval #Describe the precition metric you have used. Precision may be reported either as variation among observed values (e.g. standard deviation, variance, range, interquartile range) or as uncertainty around an estimated value (e.g. standard error, confidence interval, credible interval). 
 format: 
   html:
     embed-resources: true
@@ -75,8 +77,8 @@ author:
     email: brett.sandercock@nina.no # Enter email
     affiliations:
       - ref: myID               # To reuse affiliations reference the id like this
-AuthorList: Doe, J. and Last, F.  
-date: June 15, 2026 # Enter date
+AuthorList: Adjei, K.P., Snell, R. S. S., Pacon-Jordan, D. and Sandercock, B.  
+date: October 5, 2026 # Enter date
 data_availability: none
 code_reproducibility: none
 open_science_badge: none
@@ -219,30 +221,22 @@ With a maximum of 300 words, describe the indicator in general terms as you woul
 
 1. **Background and rationale**:
 
-Birds are a fundamental component of global biodiversity and are among the most well-known and widely studied groups of organisms [@barrowclough2016many; @stork1997measuring]. Their visibility and familiarity make them especially suitable for both scientific assessment and public communication of environmental change [@bibby1999making; @santos2026geographical]. Beyond their recognizability, birds contribute significantly to ecosystem functioning through services such as pollination, seed dispersal, pest regulation, and nutrient cycling, which are essential for maintaining ecological balance and supporting human well-being [@whelan2015birds; @mariyappan2023ecological; @wenny2011need].
+Birds are a fundamental component of global biodiversity and among the best-studied groups of organisms, providing extensive data for assessing biodiversity patterns and environmental change [@barrowclough2016many; @stork1997measuring]. Their visibility, broad distribution, and familiarity also make them effective for communicating environmental change to non-specialist audiences [@bibby1999making; @santos2026geographical]. Birds contribute to ecosystem functioning through processes such as seed dispersal, pollination, pest regulation, and nutrient cycling, linking their ecological importance to both ecosystem functioning and human well-being [@whelan2015birds; @mariyappan2023ecological; @wenny2011need]. At the same time, bird communities are responsive to environmental variation and disturbance, with changes in their distribution, abundance, and demographic performance reflecting responses to land-use change, climate change, habitat degradation, and changes in food availability [@rigal2023farmland; @johnson2011global; @tscharntke2023agriculture]. This sensitivity, together with established monitoring programmes, makes birds useful indicators of environmental change.
 
-Importantly, birds are highly sensitive to environmental variation and disturbance. Changes in their distribution, abundance, and breeding performance often reflect underlying shifts in ecosystem conditions. Bird populations respond to a wide range of natural and anthropogenic pressures, including land-use change, climate change, habitat degradation, and variation in food resources such as insects and seeds [@rigal2023farmland; @johnson2011global; @tscharntke2023agriculture]. This responsiveness makes them reliable bioindicators of ecosystem health and environmental change.
-
-Breeding birds, in particular, provide valuable insights because their presence and reproductive success depend closely on habitat quality, resource availability, and local environmental conditions during the breeding season [@fuller2012bird; @alerstam1982bird]. As a result, breeding bird indicators can effectively capture spatial and temporal changes in ecosystem integrity.
-
-Species richness of breeding birds is widely used as an indicator of ecosystem condition because it is simple, robust, and integrative [@gregory2003using; @devictor2009measuring]. It reflects the cumulative response of multiple species to environmental factors and can serve as a proxy for broader biodiversity patterns and ecosystem resilience. Consequently, monitoring breeding bird richness offers a practical and informative approach to assessing ecosystem status and tracking the impacts of environmental stressors over time.
+Breeding birds are particularly informative for ecosystem assessment because their occurrence and reproductive performance are closely associated with breeding habitat quality, resource availability, and local environmental conditions [@fuller2012bird; @alerstam1982bird]. Consequently, changes in breeding bird communities can provide an integrated signal of changes in ecosystem conditions during the breeding season. Breeding bird species richness is widely used as a community-level biodiversity measure because it integrates responses across multiple species and can provide a relatively simple metric for ecological assessment [@gregory2003using; @devictor2009measuring]. However, observed richness alone may also reflect differences in detectability, sampling effort, and the regional species pool. Incorporating species-specific occurrence or occupancy probabilities and evaluating expected richness against an explicitly defined ecological reference condition therefore provides a stronger basis for interpreting breeding bird richness as an indicator of ecosystem condition and for assessing spatial and temporal changes in ecosystem integrity.
 
 2. **Methods**:
 <!-- What kind of data is used? How is the data customized (modified, estimated, integrated) to fit its purpose as an indicator? -->
 
- - *Data used:* 
- 
- Long-term breeding bird observations from the Norwegian terrestrial monitoring programme ([Hekkefulgovervåkingen](https://hekkefuglovervakingen.nina.no/Fugl/Default.aspx?ReturnUrl=%2fFugl%2f); formerly TOV-E)[@kaalaas2022norsk], covering multiple ecosystems, species, and decades.
+- *Data used*: Long-term breeding-bird observations from the Norwegian terrestrial monitoring programme, [Hekkefulgovervåkingen](https://hekkefuglovervakingen.nina.no/Fugl/Default.aspx?ReturnUrl=%2fFugl%2f) (formerly TOV-E), covering multiple species, ecosystems, and years [@kaalaas2022norsk].
 
+- *Species and ecosystem definition*: Bird species were selected using expert-defined species lists representing the characteristic bird communities of the forest and mountain ecosystems. The resulting datasets comprised 18 characteristic forest bird species and 16 characteristic mountain bird species.
 
-  - *Customization and processing:* 
-      - Species filtered using expert-defined lists to represent specific ecosystems.
-      - Observations converted to detection/non-detection data and analysed with point-level       - occupancy models (fitted with `spOccupancy`; @doser2022spoccupancy) using the last five years as temporal replicates.
-      - Expected species richness estimated for each ecosystem from selected species.
-      - Reference conditions defined using natural reserves (intact ecosystems).
-      - Indicator values scaled between $0$ and $1$, enabling standardized comparison of ecosystem condition across space and time
+- *Data preparation and occupancy modelling*: Observations were converted to detection/non-detection data and analysed using point-level occupancy models implemented in ``spOccupancy`` [@doser2022spoccupancy]. The most recent five years of observations (2020 - 2024) were used as temporal replicates, allowing detection probability to be separated from the underlying occupancy process. Both single-species and multi-species models were evaluated, with spatial and non-spatial formulations considered where appropriate.
 
+- *Model selection and prediction*: Models were compared using WAIC within the respective modelling frameworks. The final models used for indicator estimation were selected by considering model support and comparing the resulting spatial predictions. The selected models were then used to estimate species-specific occupancy probabilities across the study area and derive expected species richness for each ecosystem.
 
+- *Reference condition and indicator scaling*: Reference conditions were defined using expert-elicited species-specific occurrence probabilities, representing the expected occurrence of each characteristic species under the defined reference ecological condition and assuming perfect detection. Expected species richness was scaled relative to this reference richness to produce an indicator ranging from 0 to 1, where higher values indicate a larger proportion of the characteristic bird community expected under reference conditions and lower values indicate greater departure from the reference condition.
 
 
 3. **Interpretation**:
@@ -254,7 +248,9 @@ An indicator value of $1$ represents a fully intact breeding bird community in f
 4. **Results and development needs**:
 <!-- Briefly, what does the indicator say about the ecosystem condition. What is the current status of  the metric (can it be used or is it still in development), and what immediate tasks remain to improve the indicator or to make the indicator operational -->
 
-The breeding bird indicator reflects ecosystem condition by measuring how closely the observed bird community matches the expected species richness for a given ecosystem under near-natural conditions. High values indicate a well-functioning and intact ecosystem, while lower values signal ecological degradation, typically linked to habitat change, reduced resource availability, or broader environmental pressures.
+The breeding bird indicator provides a spatially explicit measure of ecosystem condition by expressing expected species richness relative to an expert-elicited reference condition. Higher indicator values indicate that a larger proportion of the characteristic bird community is expected to occur under the prevailing environmental conditions, whereas lower values indicate a greater departure from the reference condition. Across the five biogeographic regions, the indicator revealed clear differences between forest and mountain ecosystems. Forest ecosystems showed the greatest regional variation, with median values highest in the South (0.80), followed by the East (0.73) and West (0.72), and lower in Central (0.60) and particularly the North (0.38). Mountain ecosystems showed a narrower regional range, with the highest values in the North (0.68), followed by the East (0.66) and Central (0.62), and lower values in the West (0.58) and South (0.54). These patterns demonstrate that the indicator can distinguish meaningful spatial differences in ecosystem condition and identify regions where the characteristic bird community is relatively close to, or further from, the defined reference condition.
+
+The indicator is operational and can be used to assess and compare ecosystem condition across regions. The immediate priorities are therefore focused on maintaining and improving its application rather than developing the indicator itself. In particular, continued updating with new bird monitoring data, periodic reassessment of the expert-elicited reference values, and evaluation of temporal changes in the indicator will strengthen its long-term application. Clear guidance on interpreting changes in indicator values and incorporating updated model predictions will also support consistent use in ecosystem assessment, monitoring, and management.
 
 
 ## 2. About the underlying data {#sec-underlyingData}
@@ -274,9 +270,9 @@ At each sampling point, observers record all birds seen or heard within a fixed 
 
 The indicator is based on data from the Norwegian breeding bird monitoring programme (Hekkefuglovervåkingen), which covers terrestrial ecosystems across the entire country. The monitoring network consists of $492$ fixed survey routes distributed along major latitudinal and altitudinal gradients, providing broad ecological representation. Each route includes $12–20$ point-count locations, resulting in approximately $9,000$ sampling points nationwide.
 
-For this indicator, data from $2021$ to $2025$ are used, providing a recent and consistent time window. The temporal resolution is annual, as each route is surveyed once during the breeding season. Due to logistical constraints, around $370$ routes are sampled each year, ensuring coverage of roughly $80\%$ of the total network.
+For this indicator, data from $2020$ to $2024$ are used, providing a recent and consistent time window. The temporal resolution is annual, as each route is surveyed once during the breeding season. Due to logistical constraints, around $370$ routes are sampled each year, ensuring coverage of roughly $80\%$ of the total network.
 
-Currently, the indicator is aggregated at the national scale, meaning that it reflects overall ecosystem condition across Norway. Although the spatial coverage would allow finer regional analyses, these have not yet been implemented.This also allows for regional analysis such as indicators for Northern and Southern Norway, biogeographic regions ie. alpine, boreal, arctic, etc.
+The indicator is aggregated at the regional and national scale, reflecting the overall ecosystem condition across Norway.
 
 ### 2.2 Sampling design
 
@@ -292,9 +288,10 @@ Potential sources of sampling bias include variation in observer skill, uneven a
 
 <!--# What are the original units for the most relevant  variables in the data-->
 
-During field surveys, observers record the number of individual birds seen or heard at each sampling point. For the purposes of this indicator, these raw counts are subsequently simplified into detection/non-detection (presence–absence) data, where each species is coded as either detected ($1$) or not detected ($0$) at a given point and survey occasion, regardless of the number of individuals observed.
+During field surveys, observers record the number of individual birds seen or heard at each sampling point and survey occasion. These observations are therefore originally recorded as counts of individuals (i.e., the number of birds detected for each species). The observed count data contain a large number of zeros, particularly for rare species. For the purposes of this indicator, the raw counts are therefore transformed into detection–non-detection (presence–absence) data. Each species is coded as either detected (1) or not detected (0) at a given sampling point and survey occasion, irrespective of the number of individuals observed. Thus, a count of one or more individuals is recorded as 1, while a count of zero is recorded as 0.
 
-This transformation standardizes the data and allows it to be used in occupancy modelling frameworks. In the first stage of the workflow, the detection/non-detection data are used to estimate species-specific occupancy probabilities rather than abundance. These occupancy estimates provide a measure of how likely a species is to occur at a site, accounting for imperfect detection. The resulting metrics form the basis for further analyses, including the estimation of expected species richness and the development of ecosystem indicators.
+This transformation provides a standardized response variable suitable for occupancy modelling and is particularly useful for estimating the occurrence of rare species. Importantly, it shifts the focus from the number of individuals observed to whether a species is detected at a site, while the repeated survey design allows the models to account for imperfect detection. In the first stage of the workflow, the detection–non-detection data are used to estimate species-specific occupancy probabilities, rather than abundance. Occupancy probability represents the estimated probability that a species occurs at a site, while accounting for the possibility that the species may be present but not detected during a particular survey. These occupancy estimates are subsequently used to derive metrics such as expected species richness and to develop the ecosystem-level indicator.
+
 
 ### 2.4 Instructions for citing, using and accessing data
 
@@ -368,15 +365,22 @@ Together, these drivers influence species occupancy and richness, making the ind
 
 <!-- Describe in word the same aggregation pathway presented in the top yaml (the metadata). If you have scaled against the reference value, it is especially important to know if you did any avergaing or summations etc. beforehand. An example text for a rather simple case could be: "The variable is scaled at the initial polygon level and the point estimate is a area-weighted arithmetic mean of all polygins. There is no transformation, and truncation is not needed as the indicator becomes naturally bound between 0 and 1".  -->
 
+Species-specific occupancy probabilities are predicted at each spatial prediction location and summed across the characteristic species to obtain expected species richness. This expected richness is scaled against the expert-elicited reference richness for the corresponding ecosystem type, producing an indicator bounded between 0 and 1. For regional reporting, the resulting spatial indicator values are aggregated using the median, with uncertainty represented by lower and upper quantiles obtained from bootstrap estimates. No additional transformation or truncation is applied because the reference scaling naturally constrains the indicator to the 0–1 range.
+
+
 ## 4. Reference condition and levels
 
 ### 4.1 Reference condition
 
 <!--# Define the reference condition (or refer to where it is defined). Note the distinction between reference condition and reference levels 10.3897/oneeco.5.e58216  -->
 
-In this study, reference conditions are defined using bird communities observed in national parks and nature reserves, which are assumed to represent relatively intact forest and mountain ecosystems with minimal human disturbance. These protected areas provide a practical benchmark for the species composition and richness expected under near-natural conditions.
+In this study, the reference condition is defined using expert-elicited information on species occupancy. Experts were asked to estimate the occupancy probability of each bird species under a hypothetical situation of perfect detection, representing the expected occurrence of the breeding bird community under reference ecological conditions.
 
-The indicator values are therefore interpreted relative to these reference sites, allowing for a comparison between observed and expected ecosystem states. Unlike some other ecosystem types (e.g. agricultural systems), where clear reference conditions may be difficult to define, this approach provides a consistent and ecologically meaningful baseline for assessing the condition of forest and mountain ecosystems.
+These expert-derived occupancy probabilities provide a benchmark against which the condition of observed ecosystems can be evaluated. The reference condition therefore represents an ecologically meaningful expectation of the bird community rather than a specific observed site or a fixed reference level.
+
+Indicator values are subsequently interpreted relative to this reference condition, allowing the estimated state of an ecosystem to be compared with the expected state under reference conditions. This distinction is important: the reference condition describes the ecological state against which ecosystem condition is assessed, whereas reference levels are numerical values derived from that condition and used to scale or interpret the indicator.
+
+Using expert-elicited occupancy probabilities provides a consistent baseline for assessing the condition of forest and mountain ecosystems, where a single set of undisturbed or pristine reference sites may be difficult to identify or may not adequately represent the expected breeding bird community across the full geographical extent of the assessment.ides a consistent and ecologically meaningful baseline for assessing the condition of forest and mountain ecosystems.
 
 ### 4.2 Reference levels
 
@@ -390,19 +394,25 @@ Why was the current option chosen and how were the reference levels quantified? 
 
  -->
 
-The indicator is scaled to range between X~0~ (worst condition) and X~100~ (best condition) to enable consistent interpretation across ecosystems and time.
+ The indicator is based on expected species richness, derived from species-specific occupancy probabilities. To facilitate consistent interpretation across ecosystems and over time, expected species richness is normalized to a 0–100 scale using two reference levels.
 
 - **X~100~ (reference level – best condition)**:
-Defined by the expected species richness in national parks and nature reserves, which represent near-natural forest and mountain ecosystems with minimal human impact. These areas provide the ecological benchmark for an intact breeding bird community.
+X~100~ is defined by the expected species richness derived from expert elicitation. Experts provided species-specific occupancy probabilities under a hypothetical scenario of perfect detection and reference ecological conditions. These probabilities are combined to derive the expected species richness representing the benchmark for the breeding bird community under the defined reference condition.
 
 - **X~0~ (worst condition)**:
-Represents a theoretical state where none of the expected characteristic species are present, corresponding to a highly degraded ecosystem.
+X~0~ is set to 0 species, representing a theoretical state in which none of the characteristic breeding bird species are expected to occur. This defines the lower bound of the indicator scale.
 
 - **Intermediate values (X~n~)**:
-Values between 0 and 100 reflect the proportion of expected species richness observed relative to the reference condition. For example, a value of X~60~ indicates that roughly 60% of the expected species are present compared to intact reference systems.
+Values between $0$ and $100$ represent expected species richness relative to the expert-elicited reference level. Thus, an indicator value of X~60~ corresponds to an expected species richness equal to approximately $60\%$ of the expert-elicited reference richness.
 
-The reference levels were chosen because protected areas provide the most realistic and ecologically meaningful approximation of baseline conditions under low human pressure. The values are quantified by estimating expected species richness from occupancy models and then scaling these estimates relative to the reference sites, ensuring a comparable and standardized indicator across ecosystems.
+The use of expert-elicited occupancy probabilities to define X₁₀₀ provides an explicit ecological benchmark for the indicator. It avoids relying on the assumption that currently protected areas necessarily represent an optimal or undisturbed state and instead defines the reference condition directly in terms of the expected breeding bird community.
 
+The normalized indicator can therefore be expressed as:
+$$
+X = 100 \times \frac{R_{\mathrm{expected}}}{R_{\mathrm{reference}}},
+$$
+
+where $R_{\mathrm{expected}}$ is the model-estimated expected species richness at a given location and $R_{\mathrm{reference}}$ is the expected species richness calculated from the expert-elicited reference occupancy probabilities. Consequently, $X_0=0$ and $X_{100}=R_{\mathrm{reference}}$ on the underlying richness scale, with the corresponding normalized indicator value of 100.
 
 #### 4.2.1 Spatial resolution and validity
 
@@ -411,29 +421,26 @@ The reference levels were chosen because protected areas provide the most realis
 Describe the spatial resolution of the reference levels. E.g. is it defined as a fixed value for all areas, or does it vary. Also, at what spatial scale are the reference levels valid? For example, if the reference levels have a regional resolution (varies between regions), it might mean that it is only valid and correct to use for normalising local variable values that are first aggregated to regional scale. However, sometimes the reference levels are insensitive to this and can be used to scale variables at the local (e.g. plot) scale. 
 
  -->
- 
- The reference levels used to normalise the indicator are defined at the biogeographic regional scale, meaning that reference values vary across regions rather than being fixed nationwide. This approach accounts for natural differences in species composition, climate, and habitat conditions that influence expected bird communities in different parts of Norway.
- 
-Accordingly, each biogeographic region has its own reference value ($X~100~$), derived from protected areas within that region. These region-specific benchmarks are most appropriate for interpreting ecosystem condition at regional or aggregated scales, ensuring that comparisons are ecologically meaningful within similar environmental contexts.
 
-While the regional reference levels can be applied to local observations (e.g. individual sampling points), their interpretation is most robust when results are aggregated to the regional level, where variability is reduced and the reference conditions are more representative.
+The reference level is defined at the national scale and is therefore a fixed value across Norway. Experts provide one reference occupancy probability for each species, which is used to derive the national reference value for expected species richness. The same reference level is used to normalize expected species richness at the local, regional, and national scales, allowing the indicator to be calculated locally and subsequently aggregated without changing the reference benchmark.
+
 
 ## 5. Uncertainties
 ### 5.1 General uncertainties
 <!--# Describe the main reasons why you might not trust 100% the final value to represent the given ecosystem characteristic for the give ecosystem type. What aspects of this condition metric are most sensitive to subjective decitions? Is the spatial sampling sufficient? Does the choice of modeling framework affect the values? Is the metric relevant do describe ecosystem condition for the give ecosystem type?  -->
 
-Several factors limit how precisely the indicator reflects ecosystem condition. A major source of uncertainty is the subjective selection of species, as expert-defined species lists may not fully represent all ecological variation within each ecosystem. The definition of reference conditions (based on protected areas) also introduces uncertainty, since these sites may not be entirely free from human influence.
+Several factors limit how precisely the indicator reflects ecosystem condition. A major source of uncertainty is the expert-based definition of the reference condition, as the species-specific reference occupancy probabilities depend on expert judgement and may not capture the full ecological variation in breeding bird communities across Norway. Similarly, the selection of characteristic species may not fully represent all aspects of ecosystem functioning. The indicator is also influenced by the spatial and temporal coverage of the monitoring data. Although the survey network provides broad coverage, only a subset of routes is surveyed each year, and some habitats or regions may be underrepresented due to accessibility and other sampling constraints.
 
-The sampling design may introduce bias, as only a subset of routes is surveyed each year and some habitats or regions may be underrepresented due to accessibility constraints. In addition, the indicator depends on an occupancy modelling framework, which requires assumptions about detection probability and model structure; different modelling choices could produce different results. Finally, while breeding birds are informative indicators, they primarily capture community composition and may not fully represent all aspects of ecosystem condition.
+The indicator also depends on the occupancy modelling framework and its assumptions, particularly assumptions about detection probability, model structure, and covariate effects. Alternative modelling choices may therefore produce different occupancy and expected richness estimates. In addition, the use of detection–non-detection data means that the indicator reflects community composition and species occurrence rather than abundance or demographic status. While breeding birds provide an informative measure of ecosystem condition, they do not capture all components of ecosystem structure and functioning. These limitations should therefore be considered when interpreting indicator values and their uncertainty.
 
 
 ### 5.2 Reported uncertainties
 <!-- Describe the nature of the errors you (hopefully) provide alongside the point estimate for the condition metric. It is especially important to clarify if the errors are inferential (referring to the uncertainty of the point estimate) or descriptive (referreing to the data itself). Here' an example text: "What we report as uncertainties in @tbl-finalTable are inferential and refer to the uncertainty around the point estimates. It does not directly describe variation in the data itself. 
 However, the variation in the mean is defined by the spatial variation only, and quartiles are obtained by bootstrapping the set of localities within a region, and calculating the indicator for each of 9999 such samples".   -->
 
-The uncertainties reported for this indicator are inferential, meaning they quantify the uncertainty around the estimated indicator values rather than describing variability in the raw data itself. These uncertainties arise from the occupancy modelling framework, including estimation of detection probabilities and species occurrence.
+The uncertainties reported alongside the indicator values are inferential uncertainties and describe uncertainty around the estimated point value of the condition metric. They should not be interpreted as a direct measure of spatial variation in expected species richness or variation among individual sampling locations.
 
-We report uncertainty using 95% confidence intervals (CI) associated with the scaled indicator values. These intervals are derived by propagating uncertainty from the occupancy estimates through to expected species richness and the final normalized indicator. As a result, the 95% CI reflects the range within which the true ecosystem condition is likely to lie, given the available data and model assumptions, rather than direct variation in observed counts.
+For each region and for the national estimate, 1,000 bootstrap iterations are performed, with 20,000 samples per iteration, to estimate the intercept term of a beta regression. The resulting bootstrap distribution represents the uncertainty in the estimated condition metric. The 2.5th and 97.5th percentiles of this distribution are reported as the lower and upper uncertainty bounds, respectively, corresponding to a $95\%$ bootstrap interval around the point estimate.
 
 ## 6. References
 
@@ -655,7 +662,7 @@ See @sec-underlyingData for the data description.
 
 The breeding bird observations are retrieved directly from the database using the function a defined function `retrieve_breedingBirds_routesAndCounts`:
 
-```{r}
+```{r breedingBirdData}
 #| echo: true
 #| code-fold: true
 #| eval: false
@@ -675,12 +682,12 @@ This process retrieves survey routes, point locations, and bird counts and subse
 
 Caching ensures that future executions can proceed without repeatedly querying the database.
 
-### 7.2. Dataset B
+### 7.2. Ecosystem species list
 
 <!--# Repeat the process for each dataset -->
 
 The ecosystem-specific species list is loaded using a defined function `retrieve_expertSpeciesList`:
-```{r}
+```{r expertSciesData}
 #| echo: true
 #| code-fold: true
 #| eval: false
@@ -702,11 +709,37 @@ expertSpeciesData <- retrieve_expertSpeciesList(
   )
 ```
 
+We present the species suggested by the experts and included in the forest and mountain ecosystems in @tbl-expertReferenceVals. There are $18$ forest and $16$ mountain species in the species list. 
 
-The dataset can be processed in a formot that `spOccuancy` can use for the model fitting.
+The dataset can be processed in a format that `spOccuancy` can use for the model fitting.
 
-**Report the species used for each indicator here.**
+### Expert-ellicited reference values
 
+@tbl-expertReferenceVals provides the reference-value dataset comprising of expert-elicited occurrence probabilities for the characteristic bird species included in the forest and mountain ecosystem indicators. For each species, experts assessed the probability of occurrence under the defined reference ecological condition, assuming perfect detection. The resulting probabilities range from 0 to 1 and vary among species and ecosystem types, reflecting differences in their expected association with the respective ecosystems. These species-specific probabilities are subsequently used to derive the expected species richness under reference conditions, which provides the ecological benchmark against which model-estimated species richness is scaled.
+
+```{r tbl-expertReferenceVals}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(knitr)
+
+forest <- readr::read_csv("../data/forest/reference_data.csv") |>
+  dplyr::mutate(`Ecosystem type` = "Forest")
+mountain <- readr::read_csv("../data/mountain/reference_data.csv")|>
+  dplyr::mutate(`Ecosystem type` = "Mountain")
+
+ref_vals <- bind_rows(forest |> dplyr::select(Species, `Ecosystem type`, Values),
+                        mountain |> dplyr::select(Species, `Ecosystem type`, Values))
+
+knitr::kable(
+  ref_vals,
+  caption = "Expert-elicited species occurrence-probability reference values used to scale the ecosystem indicators by ecosystem type. Experts were asked to assess the probability that each species occurs within a given ecosystem type, assuming perfect detection.",
+  col.names = c("Species", "Ecosystem type", "Reference value")
+)
+
+```
 
 ## 8. Spatial units
 
@@ -762,7 +795,9 @@ We refer to these vignettes for details on the model fitted and the calculation 
 
 - [Calculating Scaled Ecosystem Richness Indicators](https://github.com/NINAnor/breedingBirdIndicator_OccupancyModelling/blob/main/vignettes/indicator_estimation.qmd)
 
-### 9.1 Fitting the occupancy models
+### 9.1 Occupancy models
+
+#### 9.1.1 Fitting the models
 
 We fitted a Bayesian occupancy modelling framework for breeding bird monitoring data using the `spOccupancy` package [@doser2022spoccupancy]. This workflow supports single-species and multi-species occupancy models, with optional spatial random effects to account for residual spatial dependence among sampling locations.
 
@@ -777,1261 +812,42 @@ To flexibly fit the models, we write a function `fit_ecosystem_spoccupancy` whic
 | `FALSE`          | `FALSE`             | `msPGOcc()`          |
 | `FALSE`          | `TRUE`              | `spMsPGOcc()`        |
 
-```{r}
+```{r fittingModel}
 #| echo: true
 #| code-fold: true
 #| eval: false
 #| warning: false
 
-fit_ecosystem_spoccupancy <- function(
-    ecosystemBreedingBird = NULL,
-    ecosystemType         = NULL,
-    maxSpeciesInGrps      = 10,
 
-    occ_covariates = NULL,
-    det_covariates = NULL,
-    species_groupings = NULL,
-
-    site_id_col  = "Route_point_id",
-    species_col  = "Species",
-    year_col     = "Year",
-    count_col    = "TotalCount",
-    lon_col      = "Longitude",
-    lat_col      = "Latitude",
-
-    route_id_col = NULL,
-    point_id_col = NULL,
-
-    use_route_random_effect = FALSE,
-    fill_detection_vals = TRUE,
-
-    covariates_to_scale = NULL,
-    remove_routes_with_missing_coords = TRUE,
-
-    # --- Model type switches ---
-    single_species    = FALSE,   # TRUE -> PGOcc / spPGOcc per species
-    fit_spatial_model = TRUE,    # TRUE -> spatial NNGP variant
-
-    n.batch       = 100,
-    batch.length  = 5,
-    n.burn        = 100,
-    n.thin        = 2,
-    n.chains      = 2,
-    n.neighbors   = 3,
-    n.omp.threads = 2,
-    cov.model     = "exponential",
-
-    fit_models   = TRUE,
-    save_results = FALSE,
-    verbose = FALSE,
-    output_dir   = getwd()
-) {
-
-  # ---------------------------------------------------------------------------
-  # Packages
-  # ---------------------------------------------------------------------------
-
-  pkgs <- c("spOccupancy", "dplyr", "tidyr", "coda", "readxl")
-  for (p in pkgs) {
-    if (!requireNamespace(p, quietly = TRUE)) install.packages(p)
-  }
-  invisible(lapply(pkgs, library, character.only = TRUE))
-
-  # ---------------------------------------------------------------------------
-  # Basic checks
-  # ---------------------------------------------------------------------------
-
-  required_cols <- c(
-    site_id_col, species_col, year_col, count_col,
-    lon_col, lat_col, occ_covariates, det_covariates
-  )
-
-  missing_cols <- setdiff(required_cols, names(ecosystemBreedingBird))
-  if (length(missing_cols) > 0) {
-    stop("These columns are missing from ecosystemBreedingBird: ",
-         paste(missing_cols, collapse = ", "))
-  }
-
-  if (is.null(covariates_to_scale)) {
-    covariates_to_scale <- unique(c(occ_covariates, det_covariates))
-  }
-
-  # ---------------------------------------------------------------------------
-  # Species groupings
-  # ---------------------------------------------------------------------------
-
-  if (!is.null(species_groupings)) {
-    guilds <- sort(unique(species_groupings$broad_guild))
-    guilds <- guilds[!is.na(guilds)]
-
-  } else {
-    speciesCnts <- length(unique(ecosystemBreedingBird[[species_col]]))
-
-    if (single_species) {
-      # One guild per species when fitting individually
-      species_groupings <- data.frame(
-        Species     = unique(ecosystemBreedingBird[[species_col]]),
-        broad_guild = unique(ecosystemBreedingBird[[species_col]]),
-        stringsAsFactors = FALSE
-      )
-
-    } else if (speciesCnts > maxSpeciesInGrps) {
-      species    <- unique(ecosystemBreedingBird[[species_col]])
-      n_groups   <- ceiling(length(species) / maxSpeciesInGrps)
-
-      cat("Splitting", speciesCnts, "species into", n_groups,
-          "groups (max", maxSpeciesInGrps, "each)\n")
-
-      species_groups <- split(
-        species,
-        cut(seq_along(species), breaks = n_groups, labels = FALSE)
-      )
-
-      species_groupings <- do.call(rbind, lapply(seq_along(species_groups), function(i) {
-        data.frame(Species     = species_groups[[i]],
-                   broad_guild = paste("Species group", i),
-                   stringsAsFactors = FALSE)
-      }))
-
-    } else {
-      species_groupings <- data.frame(
-        Species     = unique(ecosystemBreedingBird[[species_col]]),
-        broad_guild = "Species group 1",
-        stringsAsFactors = FALSE
-      )
+    if (fitModel) {
+      source(here::here(
+        "scripts",
+        "02_pipeline",
+        "02_modelFit",
+        "01_modelFit.R"
+      ))
+            # Rest for 1 minute
+      Sys.sleep(1 * 60)
     }
-
-    guilds <- sort(unique(species_groupings$broad_guild))
-    guilds <- guilds[!is.na(guilds)]
-  }
-
-  if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
-  output_dir <- normalizePath(output_dir, winslash = "/", mustWork = FALSE)
-  # ---------------------------------------------------------------------------
-  # Helper functions
-  # ---------------------------------------------------------------------------
-
-  make_rhs <- function(covariates, use_route_random_effect = FALSE) {
-    rhs <- paste(covariates, collapse = " + ")
-    if (use_route_random_effect) rhs <- paste(rhs, "+ (1 | route_id)")
-    rhs
-  }
-
-  post_summary <- function(samples) {
-    # Handles both matrix (multi-species) and vector/1-col (single-species)
-    if (is.null(dim(samples))) samples <- matrix(samples, ncol = 1)
-    out <- t(apply(samples, 2, function(x) {
-      c(Mean     = mean(x, na.rm = TRUE),
-        SD       = sd(x, na.rm = TRUE),
-        `2.5%`   = quantile(x, 0.025, na.rm = TRUE),
-        `97.5%`  = quantile(x, 0.975, na.rm = TRUE),
-        `Pr(>0)` = mean(x > 0, na.rm = TRUE))
-    }))
-    as.data.frame(out)
-  }
-
-  extract_named_effect <- function(samples, effect_name) {
-    if (is.null(dim(samples))) samples <- matrix(samples, ncol = 1,
-                                                 dimnames = list(NULL, effect_name))
-    sample_names <- colnames(samples)
-    cols <- sample_names[
-      sample_names == effect_name |
-        startsWith(sample_names, paste0(effect_name, "-")) |
-        startsWith(sample_names, effect_name)
-    ]
-    if (length(cols) == 0) return(NULL)
-
-    out         <- post_summary(samples[, cols, drop = FALSE])
-    raw_effect  <- sub("-[^-]+$", "", cols)
-    species     <- sub("^.*-", "", cols)
-    level       <- ifelse(raw_effect == effect_name, NA_character_,
-                          sub(paste0("^", effect_name), "", raw_effect))
-    out$Species   <- species
-    out$effect    <- raw_effect
-    out$covariate <- effect_name
-    out$level     <- level
-    rownames(out) <- NULL
-    out
-  }
-
-  summarize_all_named_effects <- function(samples, covariates, process,
-                                          species_name = NULL) {
-    # For single-species models, samples are vectors/matrices without species suffix
-    if (!is.null(species_name) && !is.null(dim(samples))) {
-      colnames(samples) <- paste0(colnames(samples), "-", species_name)
-    } else if (!is.null(species_name) && is.null(dim(samples))) {
-      samples <- matrix(samples, ncol = length(covariates) + 1)
-      colnames(samples) <- paste0(c("(Intercept)", covariates), "-", species_name)
-    }
-
-    effect_names <- colnames(samples)
-
-    tabs <- lapply(covariates, function(v) {
-      matched_names <- effect_names[
-        effect_names == v |
-          startsWith(effect_names, paste0(v, "-")) |
-          startsWith(effect_names, v)
-      ]
-      if (length(matched_names) == 0) return(NULL)
-
-      dplyr::bind_rows(lapply(matched_names, function(effect_name) {
-        z <- extract_named_effect(samples, effect_name)
-        if (is.null(z)) return(NULL)
-        sp         <- sub("^.*-", "", effect_name)
-        raw_effect <- sub("-[^-]+$", "", effect_name)
-        level      <- ifelse(raw_effect == v, NA_character_,
-                             sub(paste0("^", v), "", raw_effect))
-        z$process   <- process
-        z$covariate <- v
-        z$level     <- level
-        z$Species   <- sp
-        z$effect    <- effect_name
-        z
-      }))
-    })
-    dplyr::bind_rows(tabs)
-  }
-
-  check_rhat <- function(samples, parnames, n.chains) {
-    if (is.null(dim(samples))) samples <- matrix(samples, ncol = 1,
-                                                 dimnames = list(NULL, parnames[1]))
-    chains <- lapply(seq_len(n.chains), function(ch) {
-      idx <- seq(ch, nrow(samples), by = n.chains)
-      coda::as.mcmc(samples[idx, , drop = FALSE])
-    })
-    rhat <- coda::gelman.diag(coda::as.mcmc.list(chains))$psrf
-    #rownames(rhat) <- parnames
-    rhat
-  }
-
-  mode_value <- function(x) {
-    x2 <- x[!is.na(x)]
-    if (length(x2) == 0) return(NA)
-    out <- unique(x2)[which.max(tabulate(match(x2, unique(x2))))]
-    if (is.factor(x)) factor(out, levels = levels(x)) else out
-  }
-
-  all_results <- list()
-
-  # ---------------------------------------------------------------------------
-  # Build survey effort, detection/non-detection array, covariates, and coords
-  # BEFORE filtering to guilds/species
-  # ---------------------------------------------------------------------------
-
-  # This is the key consistency step. The full data set is first converted into a
-  # complete species x site x year detection/non-detection array. For every
-  # surveyed point-year, species without a detection record are assigned 0.
-  # Guild and single-species filtering happens only after this array has been
-  # created, so multi-species and single-species models use the same survey
-  # effort definition.
-
-  survey_dat <- ecosystemBreedingBird %>%
-    dplyr::mutate(
-      Route_point_id = as.character(.data[[site_id_col]]),
-      Species        = as.character(.data[[species_col]]),
-      year_chr       = as.character(.data[[year_col]]),
-      detect         = as.integer(.data[[count_col]] > 0),
-      route_id       = if (is.null(route_id_col))
-        sub("_.*", "", as.character(.data[[site_id_col]]))
-      else as.character(.data[[route_id_col]]),
-      point_id       = if (is.null(point_id_col))
-        sub(".*_", "", as.character(.data[[site_id_col]]))
-      else as.character(.data[[point_id_col]]),
-      Lon = as.numeric(.data[[lon_col]]),
-      Lat = as.numeric(.data[[lat_col]])
-    )
-
-  # ---------------------------------------------------------------------------
-  # Remove routes/sites with missing coordinates once, before any species filter
-  # ---------------------------------------------------------------------------
-
-  routes_with_missing_coords <- character(0)
-
-  if (remove_routes_with_missing_coords) {
-    routes_with_missing_coords <- survey_dat %>%
-      dplyr::filter(is.na(Lon) | is.nan(Lon) | is.na(Lat) | is.nan(Lat)) %>%
-      dplyr::pull(route_id) %>%
-      unique()
-
-    survey_dat <- survey_dat %>%
-      dplyr::filter(!route_id %in% routes_with_missing_coords)
-  } else {
-    survey_dat <- survey_dat %>%
-      dplyr::filter(!is.na(Lon), !is.nan(Lon), !is.na(Lat), !is.nan(Lat))
-  }
-
-  if (nrow(survey_dat) == 0) {
-    stop("All survey-effort data were removed after coordinate filtering.")
-  }
-
-  # ---------------------------------------------------------------------------
-  # Global indexing
-  # ---------------------------------------------------------------------------
-
-  all_points  <- sort(unique(survey_dat$Route_point_id))
-  all_routes  <- sort(unique(survey_dat$route_id))
-  all_years   <- sort(unique(survey_dat$year_chr))
-  all_species <- sort(unique(survey_dat$Species))
-
-  J_all <- length(all_points)
-  R_all <- length(all_years)
-  N_all <- length(all_species)
-
-  message(sprintf(
-    "Global survey frame: Points: %d | Years: %d | Species: %d | Routes: %d",
-    J_all, R_all, N_all, length(all_routes)
-  ))
-
-  # ---------------------------------------------------------------------------
-  # Global detection/non-detection array: species x site x year
-  # ---------------------------------------------------------------------------
-
-  y_all <- array(
-    NA_integer_,
-    dim      = c(N_all, J_all, R_all),
-    dimnames = list(all_species, all_points, all_years)
-  )
-
-  # Place observed detections/non-detections from available species rows.
-  # If repeated records exist for a species-site-year, keep 1 if any record is 1.
-  for (i in seq_len(nrow(survey_dat))) {
-    sp  <- survey_dat$Species[i]
-    pt  <- survey_dat$Route_point_id[i]
-    yr  <- survey_dat$year_chr[i]
-    val <- survey_dat$detect[i]
-
-    cur <- y_all[sp, pt, yr]
-    y_all[sp, pt, yr] <- if (is.na(cur)) val else max(cur, val, na.rm = TRUE)
-  }
-
-  # Survey effort is defined independently of species identity.
-  # Every species receives a 0 at surveyed point-years where it was not detected.
-  visited_point_year_all <- survey_dat %>%
-    dplyr::distinct(Route_point_id, year_chr)
-
-  visited_mat_all <- matrix(
-    FALSE,
-    nrow = J_all,
-    ncol = R_all,
-    dimnames = list(all_points, all_years)
-  )
-
-  visited_idx_all <- visited_point_year_all %>%
-    dplyr::transmute(
-      point_i = match(Route_point_id, all_points),
-      year_i  = match(year_chr, all_years)
-    ) %>%
-    dplyr::filter(!is.na(point_i), !is.na(year_i))
-
-  if (nrow(visited_idx_all) > 0) {
-    visited_mat_all[as.matrix(visited_idx_all)] <- TRUE
-  }
-
-  for (pt in all_points) {
-    for (yr in all_years) {
-      if (visited_mat_all[pt, yr]) {
-        y_all[is.na(y_all[, pt, yr]), pt, yr] <- 0L
-      }
-    }
-  }
-
-  # ---------------------------------------------------------------------------
-  # Global point-level covariate table
-  # ---------------------------------------------------------------------------
-
-  all_covariates <- unique(c(occ_covariates, det_covariates))
-
-  point_info <- survey_dat %>%
-    dplyr::group_by(Route_point_id, route_id, point_id, Year) %>%
-    dplyr::summarise(
-      Lon = mean(Lon, na.rm = TRUE),
-      Lat = mean(Lat, na.rm = TRUE),
-      dplyr::across(dplyr::all_of(all_covariates) & where(is.numeric),
-                    ~ mean(.x, na.rm = TRUE)),
-      dplyr::across(dplyr::all_of(all_covariates) &
-                      where(~ is.factor(.x) || is.character(.x)), mode_value),
-      .groups = "drop"
-    ) %>%
-    dplyr::arrange(match(Route_point_id, all_points), Year)
-
-  point_info_raw <- point_info
-
-  scale_existing <- intersect(covariates_to_scale, names(point_info))
-  for (v in scale_existing) {
-    if (is.numeric(point_info[[v]])) point_info[[v]] <- as.numeric(scale(point_info[[v]]))
-  }
-  point_info$route_id <- factor(point_info$route_id)
-
-  # ---------------------------------------------------------------------------
-  # Global occupancy covariates
-  # ---------------------------------------------------------------------------
-
-  occ.covs <- point_info %>%
-    dplyr::group_by(Route_point_id, route_id, point_id) %>%
-    dplyr::summarise(
-      dplyr::across(dplyr::all_of(occ_covariates), ~ {
-        if (is.numeric(.x)) mean(.x, na.rm = TRUE)
-        else if (is.factor(.x) || is.character(.x)) mode_value(.x)
-        else NA
-      }),
-      .groups = "drop"
-    ) %>%
-    dplyr::arrange(match(Route_point_id, all_points))
-
-  if (use_route_random_effect) {
-    occ.covs <- occ.covs %>%
-      dplyr::select(dplyr::all_of(occ_covariates), route_id) %>%
-      dplyr::mutate(route_id = as.numeric(as.factor(route_id)))
-  } else {
-    occ.covs <- occ.covs %>% dplyr::select(dplyr::all_of(occ_covariates))
-  }
-
-  occ.covs <- as.data.frame(occ.covs)
-  rownames(occ.covs) <- all_points
-
-  # ---------------------------------------------------------------------------
-  # Global detection covariates
-  # ---------------------------------------------------------------------------
-  # Detection covariates ---------------------------------------------------------
-
-  if (use_route_random_effect) {
-    point_info <- point_info %>%
-      dplyr::mutate(route_id = as.numeric(as.factor(route_id)))
-
-    detection_covs <- unique(c(det_covariates, "route_id"))
-  } else {
-    detection_covs <- det_covariates
-  }
-
-  fill_row_values <- function(mat, original_vals) {
-    if (!fill_detection_vals) return(mat)
-
-    is_num <- is.numeric(original_vals)
-
-    for (i in seq_len(nrow(mat))) {
-      row_vals <- mat[i, ]
-
-      if (all(is.na(row_vals))) next
-
-      fill_value <- if (is_num) {
-        mean(as.numeric(row_vals), na.rm = TRUE)
-      } else {
-        mode_value(row_vals)
-      }
-
-      mat[i, is.na(row_vals)] <- fill_value
-    }
-
-    mat
-  }
-
-  make_det_cov_matrix <- function(cov_name) {
-    tmp <- point_info %>%
-      dplyr::select(Route_point_id, Year, !!rlang::sym(cov_name)) %>%
-      tidyr::pivot_wider(
-        names_from  = Year,
-        values_from = !!rlang::sym(cov_name)
-      )
-
-    tmp <- tmp[match(all_points, tmp$Route_point_id), ]
-
-    mat <- as.matrix(tmp[, all_years, drop = FALSE])
-    rownames(mat) <- all_points
-
-    mat <- fill_row_values(
-      mat = mat,
-      original_vals = point_info[[cov_name]]
-    )
-
-    mat
-  }
-
-  det.covs <- stats::setNames(
-    lapply(detection_covs, make_det_cov_matrix),
-    detection_covs
-  )
-  # ---------------------------------------------------------------------------
-  # Global coordinates
-  # ---------------------------------------------------------------------------
-
-  point_info_coords <- survey_dat %>%
-    dplyr::group_by(Route_point_id, route_id, point_id) %>%
-    dplyr::summarise(
-      Lon = mean(Lon, na.rm = TRUE),
-      Lat = mean(Lat, na.rm = TRUE),
-      .groups = "drop"
-    ) %>%
-    dplyr::arrange(match(Route_point_id, all_points))
-
-  coords <- as.matrix(point_info_coords[, c("Lon", "Lat")])
-  rownames(coords) <- all_points
-
-  # ---------------------------------------------------------------------------
-  # Global missingness alignment
-  # ---------------------------------------------------------------------------
-
-  visit_na_all <- is.na(y_all[1, , ])
-
-  for (nm in names(det.covs)) det.covs[[nm]][visit_na_all] <- NA
-
-  y_observed_all <- !is.na(y_all[1, , ])
-  for (nm in names(det.covs)) {
-    bad <- is.na(det.covs[[nm]]) & y_observed_all
-    if (any(bad)) det.covs[[nm]][bad] <- mean(det.covs[[nm]], na.rm = TRUE)
-  }
-
-  stopifnot(all(sapply(det.covs, function(x) identical(dim(x), dim(y_all)[2:3]))))
-
-  site_never_visited_all <- apply(visit_na_all, 1, all)
-  for (nm in names(occ.covs)) occ.covs[site_never_visited_all, nm] <- NA
-
-  site_observed_all <- !site_never_visited_all
-  for (nm in names(occ.covs)) {
-    bad <- is.na(occ.covs[[nm]]) & site_observed_all
-    if (any(bad)) {
-      if (is.numeric(occ.covs[[nm]])) {
-        occ.covs[[nm]][bad] <- mean(occ.covs[[nm]], na.rm = TRUE)
-      } else {
-        occ.covs[[nm]][bad] <- names(which.max(table(occ.covs[[nm]])))
-      }
-    }
-  }
-
-  # ---------------------------------------------------------------------------
-  # Formulas and parameter counts are global because site/year covariates are
-  # now global and identical across model types.
-  # ---------------------------------------------------------------------------
-
-  occ_rhs     <- make_rhs(occ_covariates, use_route_random_effect)
-  det_rhs     <- make_rhs(det_covariates, use_route_random_effect)
-  occ_formula <- as.formula(paste("~", occ_rhs))
-  det_formula <- as.formula(paste("~", det_rhs))
-
-  dists  <- NULL; max_d <- NULL; min_d <- NULL
-  phi_lo <- NULL; phi_hi <- NULL
-
-  if (fit_spatial_model) {
-    dists  <- stats::dist(coords)
-    max_d  <- max(dists)
-    min_d  <- stats::quantile(dists, 0.05)
-    phi_lo <- 3 / max_d
-    phi_hi <- 3 / min_d
-  }
-
-  p_occ <- ncol(model.matrix(occ_formula, data = occ.covs))
-  if (use_route_random_effect) p_occ <- p_occ - 1
-
-  det_cov_df <- as.data.frame(lapply(det.covs, as.vector)) %>%
-    dplyr::mutate(dplyr::across(where(is.character), as.factor))
-  p_det <- ncol(model.matrix(det_formula, data = det_cov_df))
-  if (use_route_random_effect) p_det <- p_det - 1
-
-  # ---------------------------------------------------------------------------
-  # Loop over guilds / species
-  # ---------------------------------------------------------------------------
-
-  for (guild in guilds) {
-
-    message("\n====================================================")
-    message("Ecosystem: ", ecosystemType,
-            " | ", if (single_species) "Species" else "Guild", ": ", guild)
-    message("Model type: ",
-            if (single_species) "Single-species" else "Multi-species",
-            " | ",
-            if (fit_spatial_model) "Spatial" else "Non-spatial")
-    message("====================================================")
-
-    species_in_group <- species_groupings$Species[
-      species_groupings$broad_guild == guild
-    ]
-
-    species <- sort(intersect(species_in_group, dimnames(y_all)[[1]]))
-
-    if (length(species) == 0) {
-      warning("No species in the global survey frame for guild: ", guild)
-      next
-    }
-
-    # Now filter only the already-completed detection/non-detection array.
-    # No survey effort is recomputed inside the guild/species loop.
-    y_full <- y_all[species, , , drop = FALSE]
-
-    dat <- survey_dat %>%
-      dplyr::filter(Species %in% species)
-
-    points <- all_points
-    routes <- all_routes
-    years  <- all_years
-
-    J <- length(points)
-    R <- length(years)
-    N <- length(species)
-
-    message(sprintf("Points: %d | Years: %d | Species: %d | Routes: %d",
-                    J, R, N, length(routes)))
-
-    # =========================================================================
-    # Branch: Single-species vs Multi-species
-    # =========================================================================
-
-    if (single_species) {
-
-      # -----------------------------------------------------------------------
-      # SINGLE-SPECIES: fit one model per species in the guild
-      # -----------------------------------------------------------------------
-
-      guild_species_results <- list()
-
-      for (sp_name in species) {
-
-        message("  Fitting single-species model for: ", sp_name)
-
-        # y is a 2-D matrix (site x year) for a single species
-        y_sp <- y_full[sp_name, , ]
-
-        data.list.sp <- list(
-          y        = y_sp,
-          occ.covs = occ.covs,
-          det.covs = det.covs
-        )
-        if (fit_spatial_model) data.list.sp$coords <- coords
-
-        # Priors
-        priors.sp <- list(
-          beta.normal  = list(mean = rep(0, p_occ), var = rep(2.72, p_occ)),
-          alpha.normal = list(mean = rep(0, p_det), var = rep(2.72, p_det))
-        )
-        if (fit_spatial_model) {
-          # spPGOcc expects plain numeric vectors, not named lists
-          priors.sp$sigma.sq.ig <- c(2, 1)
-          priors.sp$phi.unif    <- c(phi_lo, phi_hi)
-        }
-        if (use_route_random_effect) {
-          priors.sp$sigma.sq.psi.ig <- list(a = 2, b = 0.5)
-        }
-
-        # Initial values
-        z.init.sp <- as.integer(apply(y_sp, 1, function(x) any(x == 1, na.rm = TRUE)))
-
-        inits.sp <- list(
-          beta  = rep(0, p_occ),
-          alpha = rep(0, p_det),
-          z     = z.init.sp
-        )
-        if (fit_spatial_model) {
-          inits.sp$sigma.sq <- 1
-          inits.sp$phi      <- 3 / (max_d / 2)
-        }
-        if (use_route_random_effect) inits.sp$sigma.sq.psi <- 1
-
-        out.sp <- NULL
-
-        if (fit_models) {
-          if (fit_spatial_model) {
-            out.sp <- spOccupancy::spPGOcc(
-              occ.formula   = occ_formula,
-              det.formula   = det_formula,
-              data          = data.list.sp,
-              inits         = inits.sp,
-              priors        = priors.sp,
-              cov.model     = cov.model,
-              NNGP          = TRUE,
-              n.neighbors   = n.neighbors,
-              n.batch       = n.batch,
-              batch.length  = batch.length,
-              n.burn        = n.burn,
-              n.thin        = n.thin,
-              n.chains      = n.chains,
-              n.omp.threads = n.omp.threads,
-              verbose       = verbose,
-              n.report      = max(1, floor(n.batch / 10))
-            )
-          } else {
-            out.sp <- spOccupancy::PGOcc(
-              occ.formula   = occ_formula,
-              det.formula   = det_formula,
-              data          = data.list.sp,
-              inits         = inits.sp,
-              priors        = priors.sp,
-              #n.batch       = n.batch,
-              #batch.length  = batch.length,
-              n.samples     = n.batch * batch.length,
-              n.burn        = n.burn,
-              n.thin        = n.thin,
-              n.chains      = n.chains,
-              n.omp.threads = n.omp.threads,
-              verbose       = verbose#,
-              #n.report      = max(1, floor(n.batch / 10))
-            )
-          }
-        }
-
-        # --- Extract single-species results ---
-        # PGOcc / spPGOcc output shapes differ from the multi-species variants:
-        #   psi.samples  : matrix  (n_iter  x  J)          -- no species dimension
-        #   z.samples    : matrix  (n_iter  x  J)          -- no species dimension
-        #   w.samples    : matrix  (n_iter  x  J)          -- spatial only, no species dim
-        #   beta.samples : matrix  (n_iter  x  p_occ)
-        #   alpha.samples: matrix  (n_iter  x  p_det)
-        #   ppcOcc       : no $sp.names field
-        sp_products <- list()
-
-        if (!is.null(out.sp)) {
-
-          ppc.sp  <- spOccupancy::ppcOcc(out.sp, fit.stat = "freeman-tukey", group = 1)
-          bp_sp   <- mean(ppc.sp$fit.y.rep > ppc.sp$fit.y, na.rm = TRUE)
-          waic.sp <- spOccupancy::waicOcc(out.sp)
-
-          # ppc summary — single-species ppcOcc has no $sp.names; inject species name
-          ppc_df.sp <- data.frame(
-            ecosystem  = ecosystemType,
-            guild      = guild,
-            Species    = sp_name,
-            bayesian_p = bp_sp,
-            row.names  = NULL
-          )
-
-          # Coefficient summaries
-          beta_summary            <- post_summary(out.sp$beta.samples)
-          beta_summary$parameter  <- colnames(out.sp$beta.samples)
-
-          alpha_summary           <- post_summary(out.sp$alpha.samples)
-          alpha_summary$parameter <- colnames(out.sp$alpha.samples)
-
-          # Name columns to match multi-species "-Species" convention for helpers
-          beta_named  <- out.sp$beta.samples
-          alpha_named <- out.sp$alpha.samples
-          colnames(beta_named)  <- paste0(colnames(out.sp$beta.samples),  "-", sp_name)
-          colnames(alpha_named) <- paste0(colnames(out.sp$alpha.samples), "-", sp_name)
-
-          occ_effects <- summarize_all_named_effects(beta_named,  occ_covariates, "occupancy")
-          det_effects <- summarize_all_named_effects(alpha_named, det_covariates, "detection")
-
-          # Spatial parameters (sigma^2, phi, effective range)
-          spatial_params <- NULL
-          if (fit_spatial_model && !is.null(out.sp$theta.samples)) {
-            # theta.samples for spPGOcc: columns named "sigma.sq" and "phi"
-            theta_m    <- colMeans(out.sp$theta.samples)
-            sigma_mean <- theta_m[grep("sigma.sq", names(theta_m))]
-            phi_mean   <- theta_m[grep("^phi",     names(theta_m))]
-            spatial_params <- data.frame(
-              ecosystem = ecosystemType,
-              guild     = guild,
-              Species   = sp_name,
-              sigma_sq  = sigma_mean,
-              phi       = phi_mean,
-              eff_range = 3 / phi_mean,
-              row.names = NULL
-            )
-          }
-
-          # ------------------------------------------------------------------
-          # Occupancy probability (psi): matrix (n_iter x J) for single-species
-          # ------------------------------------------------------------------
-          psi.mean.sp <- colMeans(out.sp$psi.samples)          # length-J vector
-          names(psi.mean.sp) <- points
-
-          psi.ci.sp <- apply(                                   # 2 x J matrix
-            out.sp$psi.samples, 2,
-            function(x) stats::quantile(x, c(0.025, 0.975))
-          )
-          colnames(psi.ci.sp) <- points
-
-          psi_long.sp <- data.frame(
-            Species   = sp_name,
-            Point     = points,
-            psi_mean  = psi.mean.sp,
-            psi_lwr   = psi.ci.sp["2.5%",  ],
-            psi_upr   = psi.ci.sp["97.5%", ],
-            ecosystem = ecosystemType,
-            guild     = guild,
-            row.names = NULL
-          ) %>%
-            dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-
-          # ------------------------------------------------------------------
-          # Latent occupancy state (z): matrix (n_iter x J) for single-species
-          # Gives posterior probability of true occupancy at each site.
-          # ------------------------------------------------------------------
-          z.mean.sp <- colMeans(out.sp$z.samples)               # length-J vector
-          names(z.mean.sp) <- points
-
-          z.ci.sp <- apply(
-            out.sp$z.samples, 2,
-            function(x) stats::quantile(x, c(0.025, 0.975))
-          )
-          colnames(z.ci.sp) <- points
-
-          z_long.sp <- data.frame(
-            Species   = sp_name,
-            Point     = points,
-            z_mean    = z.mean.sp,
-            z_lwr     = z.ci.sp["2.5%",  ],
-            z_upr     = z.ci.sp["97.5%", ],
-            ecosystem = ecosystemType,
-            guild     = guild,
-            row.names = NULL
-          ) %>%
-            dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-
-          # ------------------------------------------------------------------
-          # Spatial random effect (w): matrix (n_iter x J) for spPGOcc,
-          # NULL for non-spatial PGOcc.
-          # ------------------------------------------------------------------
-          w.mean.sp <- NULL
-          w_long.sp <- NULL
-
-          if (fit_spatial_model && !is.null(out.sp$w.samples)) {
-            # w.samples for spPGOcc: matrix (n_iter x J)
-            w.mean.sp        <- colMeans(out.sp$w.samples)
-            names(w.mean.sp) <- points
-
-            w_long.sp <- data.frame(
-              Species   = sp_name,
-              Point     = points,
-              w_mean    = w.mean.sp,
-              ecosystem = ecosystemType,
-              guild     = guild,
-              row.names = NULL
-            ) %>%
-              dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-          }
-
-          # Convergence diagnostics
-          rhat_beta <- tryCatch(
-            check_rhat(out.sp$beta.samples,
-                       c("(Intercept)", occ_covariates), n.chains),
-            error = function(e) NULL
-          )
-          rhat_alpha <- tryCatch(
-            check_rhat(out.sp$alpha.samples,
-                       c("(Intercept)", det_covariates), n.chains),
-            error = function(e) NULL
-          )
-
-          sp_products <- list(
-            model          = out.sp,
-            ppc            = ppc.sp,
-            ppc_species    = ppc_df.sp,       # consistent name with multi-species
-            ppc_overall    = bp_sp,
-            waic           = waic.sp,
-            beta_summary   = beta_summary,
-            alpha_summary  = alpha_summary,
-            occ_effects    = occ_effects,
-            det_effects    = det_effects,
-            spatial_params = spatial_params,
-            psi_mean       = psi.mean.sp,     # named length-J vector
-            psi_ci         = psi.ci.sp,       # 2 x J matrix
-            psi_long       = psi_long.sp,     # long df with lwr/upr
-            z_mean         = z.mean.sp,       # named length-J vector
-            z_ci           = z.ci.sp,         # 2 x J matrix
-            z_long         = z_long.sp,       # long df with lwr/upr
-            w_mean         = w.mean.sp,       # named length-J vector or NULL
-            w_long         = w_long.sp,       # long df or NULL
-            rhat_beta      = rhat_beta,
-            rhat_alpha     = rhat_alpha
-          )
-        }
-
-        guild_species_results[[sp_name]] <- list(
-          species      = sp_name,
-          guild        = guild,
-          ecosystem    = ecosystemType,
-          points       = points,
-          routes       = routes,
-          years        = years,
-          dims         = list(J = J, R = R),
-          formulas     = list(occ_formula = occ_formula, det_formula = det_formula),
-          fit_spatial_model = fit_spatial_model,
-          single_species    = TRUE,
-          data_used    = dat %>% dplyr::filter(Species == sp_name),
-          data_list    = data.list.sp,
-          coords       = coords,
-          priors       = priors.sp,
-          inits        = inits.sp,
-          model_products = sp_products
-        )
-
-        if (save_results) {
-          saveRDS(
-            guild_species_results[[sp_name]],
-            file = file.path(output_dir,
-                             paste0("spPGOcc_", ecosystemType, "_",
-                                    gsub("[^A-Za-z0-9]+", "_", sp_name), ".rds"))
-          )
-        }
-      } # end species loop
-
-      all_results[[guild]] <- guild_species_results
-
-    } else {
-
-      # =======================================================================
-      # MULTI-SPECIES: original path
-      # =======================================================================
-
-      data.list <- list(
-        y        = y_full,
-        occ.covs = occ.covs,
-        det.covs = det.covs
-      )
-      if (fit_spatial_model) data.list$coords <- coords
-
-      priors <- list(
-        beta.comm.normal  = list(mean = rep(0, p_occ), var = rep(2.72, p_occ)),
-        tau.sq.beta.ig    = list(a = 0.1, b = 0.1),
-        alpha.comm.normal = list(mean = rep(0, p_det), var = rep(2.72, p_det)),
-        tau.sq.alpha.ig   = list(a = 0.1, b = 0.1)
-      )
-      if (fit_spatial_model) {
-        priors$sigma.sq.ig <- list(a = 2, b = 1)
-        priors$phi.unif    <- list(a = phi_lo, b = phi_hi)
-      }
-      if (use_route_random_effect) priors$sigma.sq.psi.ig <- list(a = 2, b = 0.5)
-
-      z.init <- apply(y_full, c(1, 2), function(x) as.integer(any(x == 1, na.rm = TRUE)))
-      inits  <- list(
-        beta.comm    = rep(0, p_occ),
-        alpha.comm   = rep(0, p_det),
-        tau.sq.beta  = rep(1, p_occ),
-        tau.sq.alpha = rep(1, p_det),
-        z            = z.init
-      )
-      if (fit_spatial_model) {
-        inits$sigma.sq <- rep(1, N)
-        inits$phi      <- rep(3 / (max_d / 2), N)
-      }
-      if (use_route_random_effect) inits$sigma.sq.psi <- 1
-
-      out <- NULL
-
-      if (fit_models) {
-        message("Fitting model for guild: ", guild)
-
-        if (fit_spatial_model) {
-          out <- spOccupancy::spMsPGOcc(
-            occ.formula   = occ_formula,
-            det.formula   = det_formula,
-            data          = data.list,
-            inits         = inits,
-            priors        = priors,
-            cov.model     = cov.model,
-            NNGP          = TRUE,
-            n.neighbors   = n.neighbors,
-            n.batch       = n.batch,
-            batch.length  = batch.length,
-            n.burn        = n.burn,
-            n.thin        = n.thin,
-            n.chains      = n.chains,
-            n.omp.threads = n.omp.threads,
-            verbose       = verbose,
-            n.report      = max(1, floor(n.batch / 10))
-          )
-        } else {
-          out <- spOccupancy::msPGOcc(
-            occ.formula   = occ_formula,
-            det.formula   = det_formula,
-            data          = data.list,
-            inits         = inits,
-            priors        = priors,
-            #n.batch       = n.batch,
-            #batch.length  = batch.length,
-            n.samples = batch.length * n.batch,
-            n.burn        = n.burn,
-            n.thin        = n.thin,
-            n.chains      = n.chains,
-            n.omp.threads = n.omp.threads,
-            verbose       = verbose#,
-            #n.report      = max(1, floor(n.batch / 10))
-          )
-        }
-      }
-
-      # -----------------------------------------------------------------------
-      # Extract multi-species model products (original logic, unchanged)
-      # -----------------------------------------------------------------------
-
-      model_products <- list()
-
-      if (!is.null(out)) {
-
-        ppc <- spOccupancy::ppcOcc(out, fit.stat = "freeman-tukey", group = 1)
-        bp_species <- colMeans(ppc$fit.y.rep > ppc$fit.y, na.rm = TRUE)
-        bp_overall <- mean(ppc$fit.y.rep > ppc$fit.y, na.rm = TRUE)
-        waic       <- spOccupancy::waicOcc(out)
-
-        beta_comm_summary           <- post_summary(out$beta.comm.samples)
-        beta_comm_summary$parameter <- c("(Intercept)", occ_covariates)
-
-        alpha_comm_summary           <- post_summary(out$alpha.comm.samples)
-        alpha_comm_summary$parameter <- c("(Intercept)", det_covariates)
-
-        occ_effects <- summarize_all_named_effects(
-          out$beta.samples, occ_covariates, "occupancy")
-        det_effects <- summarize_all_named_effects(
-          out$alpha.samples, det_covariates, "detection")
-
-        spatial_params <- NULL
-        if (fit_spatial_model && !is.null(out$theta.samples)) {
-          sigma_cols <- grep("^sigma.sq-", colnames(out$theta.samples), value = TRUE)
-          phi_cols   <- grep("^phi-",      colnames(out$theta.samples), value = TRUE)
-          if (length(sigma_cols) > 0 && length(phi_cols) > 0) {
-            sigma_mean <- colMeans(out$theta.samples[, sigma_cols, drop = FALSE])
-            phi_mean   <- colMeans(out$theta.samples[, phi_cols,   drop = FALSE])
-            spatial_params <- data.frame(
-              ecosystem = ecosystemType,
-              guild     = guild,
-              Species   = sub("^sigma.sq-", "", sigma_cols),
-              sigma_sq  = sigma_mean,
-              phi       = phi_mean,
-              eff_range = 3 / phi_mean,
-              row.names = NULL
-            )
-          }
-        }
-
-        # ------------------------------------------------------------------
-        # Occupancy probability (psi): 4-D array (n_iter x N x J x 1) -> use
-        # apply over dims 2 & 3 (species x site).  psi.samples for msPGOcc /
-        # spMsPGOcc has shape (n_iter x N x J).
-        # ------------------------------------------------------------------
-        psi.mean <- apply(out$psi.samples, c(2, 3), mean)       # N x J
-        dimnames(psi.mean) <- list(species, points)
-
-        psi.lwr <- apply(out$psi.samples, c(2, 3),              # N x J
-                         function(x) stats::quantile(x, 0.025))
-        psi.upr <- apply(out$psi.samples, c(2, 3),
-                         function(x) stats::quantile(x, 0.975))
-        dimnames(psi.lwr) <- dimnames(psi.upr) <- list(species, points)
-
-        # Keep the full 3-D CI array for downstream use (2 x N x J)
-        psi.ci <- apply(out$psi.samples, c(2, 3),
-                        function(x) stats::quantile(x, c(0.025, 0.975)))
-
-        # ------------------------------------------------------------------
-        # Spatial random effect (w): 3-D array (n_iter x N x J) for spMsPGOcc
-        # ------------------------------------------------------------------
-        w.mean <- NULL
-        if (fit_spatial_model && !is.null(out$w.samples)) {
-          w.mean <- apply(out$w.samples, c(2, 3), mean)          # N x J
-          dimnames(w.mean) <- list(species, points)
-        }
-
-        # ------------------------------------------------------------------
-        # Latent occupancy state (z): 3-D array (n_iter x N x J)
-        # z_mean gives the posterior probability of true occupancy per species x site.
-        # Summing over species gives species richness.
-        # ------------------------------------------------------------------
-        z.mean <- apply(out$z.samples, c(2, 3), mean)            # N x J
-        dimnames(z.mean) <- list(species, points)
-
-        z.lwr <- apply(out$z.samples, c(2, 3),
-                       function(x) stats::quantile(x, 0.025))
-        z.upr <- apply(out$z.samples, c(2, 3),
-                       function(x) stats::quantile(x, 0.975))
-        dimnames(z.lwr) <- dimnames(z.upr) <- list(species, points)
-
-        # Richness: sum occupied species per site across posterior draws
-        richness.samples <- apply(out$z.samples, c(1, 3), sum)   # n_iter x J
-        richness.mean    <- colMeans(richness.samples)
-        richness.ci      <- apply(richness.samples, 2,
-                                  function(x) stats::quantile(x, c(0.025, 0.975)))
-        names(richness.mean) <- points
-
-        richness_df <- data.frame(
-          ecosystem      = ecosystemType,
-          guild          = guild,
-          Point          = points,
-          Route          = point_info_coords$route_id,
-          Lon            = point_info_coords$Lon,
-          Lat            = point_info_coords$Lat,
-          richness_mean  = richness.mean,
-          richness_lwr   = richness.ci[1, ],
-          richness_upr   = richness.ci[2, ],
-          row.names      = NULL
-        ) %>%
-          dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-
-        # psi long: include lower and upper CIs for consistency with single-species
-        psi_long <- as.data.frame(as.table(psi.mean)) %>%
-          dplyr::rename(Species = Var1, Point = Var2, psi_mean = Freq) %>%
-          dplyr::left_join(
-            as.data.frame(as.table(psi.lwr)) %>%
-              dplyr::rename(Species = Var1, Point = Var2, psi_lwr = Freq),
-            by = c("Species", "Point")
-          ) %>%
-          dplyr::left_join(
-            as.data.frame(as.table(psi.upr)) %>%
-              dplyr::rename(Species = Var1, Point = Var2, psi_upr = Freq),
-            by = c("Species", "Point")
-          ) %>%
-          dplyr::mutate(ecosystem = ecosystemType, guild = guild) %>%
-          dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-
-        # z long: posterior mean occupancy state per species x site
-        z_long <- as.data.frame(as.table(z.mean)) %>%
-          dplyr::rename(Species = Var1, Point = Var2, z_mean = Freq) %>%
-          dplyr::left_join(
-            as.data.frame(as.table(z.lwr)) %>%
-              dplyr::rename(Species = Var1, Point = Var2, z_lwr = Freq),
-            by = c("Species", "Point")
-          ) %>%
-          dplyr::left_join(
-            as.data.frame(as.table(z.upr)) %>%
-              dplyr::rename(Species = Var1, Point = Var2, z_upr = Freq),
-            by = c("Species", "Point")
-          ) %>%
-          dplyr::mutate(ecosystem = ecosystemType, guild = guild) %>%
-          dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-
-        w_long <- NULL
-        if (!is.null(w.mean)) {
-          w_long <- as.data.frame(as.table(w.mean)) %>%
-            dplyr::rename(Species = Var1, Point = Var2, w_mean = Freq) %>%
-            dplyr::mutate(ecosystem = ecosystemType, guild = guild) %>%
-            dplyr::left_join(point_info_raw, by = c("Point" = "Route_point_id"))
-        }
-
-        ppc_df <- data.frame(
-          ecosystem  = ecosystemType,
-          guild      = guild,
-          Species    = ppc$sp.names,
-          bayesian_p = bp_species,
-          row.names  = NULL
-        )
-
-        rhat_beta_comm <- tryCatch(
-          check_rhat(out$beta.comm.samples, c("(Intercept)", occ_covariates), n.chains),
-          error = function(e) NULL)
-        rhat_alpha_comm <- tryCatch(
-          check_rhat(out$alpha.comm.samples, c("(Intercept)", det_covariates), n.chains),
-          error = function(e) NULL)
-
-        model_products <- list(
-          model               = out,
-          ppc                 = ppc,
-          ppc_species         = ppc_df,
-          ppc_overall         = bp_overall,
-          waic                = waic,
-          beta_comm_summary   = beta_comm_summary,
-          alpha_comm_summary  = alpha_comm_summary,
-          occ_effects         = occ_effects,
-          det_effects         = det_effects,
-          spatial_params      = spatial_params,
-          psi_mean            = psi.mean,       # N x J matrix
-          psi_ci              = psi.ci,          # 2 x N x J array
-          psi_long            = psi_long,        # long df with psi_lwr/psi_upr
-          z_mean              = z.mean,          # N x J matrix
-          z_long              = z_long,          # long df with z_lwr/z_upr
-          w_mean              = w.mean,          # N x J matrix or NULL
-          w_long              = w_long,
-          richness_samples    = richness.samples,
-          richness_mean       = richness.mean,
-          richness_ci         = richness.ci,
-          richness_df         = richness_df,
-          rhat_beta_comm      = rhat_beta_comm,
-          rhat_alpha_comm     = rhat_alpha_comm
-        )
-      }
-
-      all_results[[guild]] <- list(
-        ecosystem                    = ecosystemType,
-        guild                        = guild,
-        species                      = species,
-        points                       = points,
-        routes                       = routes,
-        years                        = years,
-        dims                         = list(N = N, J = J, R = R),
-        removed_routes_missing_coords = routes_with_missing_coords,
-        formulas    = list(occ_formula = occ_formula, det_formula = det_formula),
-        fit_spatial_model = fit_spatial_model,
-        single_species    = FALSE,
-        data_used         = dat,
-        data_list         = data.list,
-        point_info_raw    = point_info_raw,
-        point_info_model  = point_info,
-        coords            = coords,
-        priors            = priors,
-        inits             = inits,
-        model_products    = model_products
-      )
-
-      if (save_results) {
-        saveRDS(
-          all_results[[guild]],
-          file = file.path(output_dir,
-                           paste0("spMsPGOcc_", ecosystemType, "_",
-                                  gsub("[^A-Za-z0-9]+", "_", guild), ".rds"))
-        )
-      }
-    } # end multi-species branch
-
-    # Pause for 30 seconds between models
-    Sys.sleep(30)
-  } # end guild loop
-
-  # ---------------------------------------------------------------------------
-  # Combine across guilds
-  # ---------------------------------------------------------------------------
-
-  if (single_species) {
-    # Flatten the nested list (guild -> species -> products) into combined tables
-
-    all_sp_results <- unlist(all_results, recursive = FALSE)
-
-    get_ss_prod <- function(x, nm) {
-      if (length(x$model_products) == 0) return(NULL)
-      x$model_products[[nm]]
-    }
-
-    combined <- list(
-      psi                    = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "psi_long")),
-      z                      = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "z_long")),
-      spatial_random_effects = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "w_long")),
-      ppc                    = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "ppc_species")),
-      spatial_params         = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "spatial_params")),
-      occ_effects            = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "occ_effects")),
-      det_effects            = dplyr::bind_rows(lapply(all_sp_results, get_ss_prod, "det_effects"))
-    )
-
-  } else {
-    get_prod <- function(x, nm) {
-      if (length(x$model_products) == 0) return(NULL)
-      x$model_products[[nm]]
-    }
-
-    combined <- list(
-      richness               = dplyr::bind_rows(lapply(all_results, get_prod, "richness_df")),
-      psi                    = dplyr::bind_rows(lapply(all_results, get_prod, "psi_long")),
-      z                      = dplyr::bind_rows(lapply(all_results, get_prod, "z_long")),
-      spatial_random_effects = dplyr::bind_rows(lapply(all_results, get_prod, "w_long")),
-      ppc                    = dplyr::bind_rows(lapply(all_results, get_prod, "ppc_species")),
-      spatial_params         = dplyr::bind_rows(lapply(all_results, get_prod, "spatial_params")),
-      occ_effects            = dplyr::bind_rows(lapply(all_results, get_prod, "occ_effects")),
-      det_effects            = dplyr::bind_rows(lapply(all_results, get_prod, "det_effects"))
-    )
-  }
-
-  return(list(
-    ecosystem         = ecosystemType,
-    single_species    = single_species,
-    fit_spatial_model = fit_spatial_model,
-    occ_covariates    = occ_covariates,
-    det_covariates    = det_covariates,
-    guild_results     = all_results,
-    combined          = combined
-  ))
-}
 ```
 
-### 9.2 Preidting over ecosystem region
+
+#### 9.1.1 Model selection
+
+For each ecosystem, competing occupancy models were evaluated using the Watanabe–Akaike information criterion (WAIC). Within the multi-species modelling framework, the candidate models were compared using WAIC, and the model with the lowest WAIC was selected as the best-performing multi-species model. Similarly, for each species within the single-species framework, the four candidate models were compared and the model with the lowest WAIC was retained. This procedure allowed the spatial and non-spatial formulations to be evaluated within each modelling framework.
+
+Because WAIC values from single-species and multi-species models are not directly comparable, the best model from each framework was retained for a final comparison based on their predicted spatial patterns. The resulting prediction maps were examined for consistency in the magnitude and spatial distribution of predicted occupancy. Where the predictions from the two frameworks were broadly similar, the multi-species model was selected for subsequent indicator estimation. Where meaningful differences were observed, the predictions were assessed in relation to model performance and ecological plausibility before selecting the final model.
+
+### 9.2 Predicting over ecosystem region
 
 After fitting the models, we predict over the relevant ecosystem region.
-```{r}
+```{r predictions}
 #| echo: true
 #| code-fold: true
 #| eval: false
 #| warning: false
+
+
     if (runPredictions) {
       source(here::here(
         "scripts",
@@ -2049,7 +865,13 @@ After fitting the models, we predict over the relevant ecosystem region.
 
 Biogeographic regions are used to summarize indicators regionally. The source shapefile is read, aligned with the Norway boundary, transformed to the model coordinate reference system, and saved as a GeoParquet file for subsequent analyses.
 
-```r
+```{r bioRegions}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+
+
 bio_regions <- get_biogeographic_region(
   input_file = file.path(
     geoSpatFolder,
@@ -2070,101 +892,28 @@ bio_regions <- get_biogeographic_region(
 )
 ```
 
-#### 9.3.2 Load protected areas
+#### 9.3.2 Estimation of the ecosystem indicator
 
-Protected areas are used as proxies for reference conditions. These areas are assumed to represent relatively intact ecosystems and provide benchmarks against which ecosystem condition can be evaluated. The protected-area layer is read from the NINA geodatabase, harmonised with the Norway boundary and model coordinate reference system, and saved as a GeoParquet file.
+The function `calculate_scaled_ecosystem_richness()` reads species-specific prediction outputs, extracts predicted mean occupancy probabilities, and combines these with expert-elicited species-specific reference occupancy probabilities to calculate expected species richness. Expected richness is then scaled relative to the national expert-defined reference condition, with 0 representing no expected species occurrence and 100 representing the reference level.
 
-```r
-protected_regions <- get_protected_areas(
-  input_file = file.path(
-    geoSpatFolder,
-    "ProtectedSites",
-    "Norway_ProtectedAreas",
-    "Original",
-    "Natur_Vern_norge_med_svalbard_25833.gdb"
-  ),
-  norway_boundary = norway_boundary,
-  modelCrs = modelCrs,
-  output_file = file.path(
-    dataFolder,
-    "processedData",
-    "protected_regions",
-    "protected_regions.parquet"
-  ),
-  layer = "Naturvernområde",
-  overwrite = FALSE
-)
+Prediction locations are assigned to Nature regions to obtain regional summaries of the indicator. For each region and the national scale, uncertainty is estimated using bootstrap resampling. In each bootstrap iteration, 20,000 prediction locations are sampled and the indicator is estimated from these samples. The resulting bootstrap distribution is used to derive the point estimate and the 2.5th and 97.5th percentiles, which represent the lower and upper bounds of the 95% uncertainty interval.
+
+```{r estimatingIndicators}
+#| echo: true
+#| code-fold: true
+#| eval: false
+#| warning: false
+
+
+        source(here::here(
+          "scripts",
+          "02_pipeline",
+          "02_modelFit",
+          "03_estimating_indicators_using_expert_references.R"
+        ))
 ```
 
-#### 9.3.3 Calculate scaled ecosystem expected richness
 
-The function `calculate_scaled_ecosystem_richness()` reads species prediction outputs, extracts predicted occupancy values, calculates expected richness, and scales richness relative to protected-area reference conditions within each biogeographic region.
-
-```r
-scaled_richness <- calculate_scaled_ecosystem_richness(
-  input_dir = path_to_predictions,
-  reference_shape = protected_regions,
-  categorisation_shape = bio_regions,
-  ecosystem_type = ecosystemType,
-  value_col = indicator_col,
-  point_spacing = aggregation_spacing,
-  forest_only_strict = ecosystemType == "Forest",
-  na.rm = TRUE,
-  output_dir = path_to_indicators,
-  save_outputs = TRUE,
-  overwrite = FALSE
-)
-```
-
-For forest ecosystems, the workflow can restrict the reference condition to protected forest ecosystems. When `forest_only_strict = TRUE`, only protected areas classified as national parks or nature reserves and designated as forest protection areas are retained.
-
-#### 9.3.4 Reference value extraction
-
-Reference conditions provide the benchmark against which ecosystem condition is evaluated. In this workflow, protected areas are assumed to approximate reference ecological conditions for forest ecosystems. Thus, the reference values represent the best available contemporary conditions rather than pristine or historical states.
-
-Reference values for forest ecosystems are estimated by generating a regular grid of points within protected-area polygons. Species occupancy predictions are then extracted at those points. The helper function `extract_species_values_at_reference()` supports both `sf` objects and `terra::SpatRaster` prediction layers. For vector predictions, values are assigned using nearest-feature matching, whereas raster predictions are extracted directly from the corresponding grid cells.
-
-The resulting object contains predicted occupancy values for each species at all reference points. Species names are stored as separate columns using standardized column names.
-
-#### 9.3.5 Expected richness
-
-Expected richness is calculated as the sum of predicted occupancy probabilities across species:
-
-```r
-expected_richness = rowSums(species_prediction_values, na.rm = TRUE)
-```
-
-This approach provides a continuous estimate of richness in which each species contributes proportionally to its predicted occupancy probability rather than through binary presence or absence. Consequently, expected richness can be interpreted as the expected number of species occurring at a location.
-
-#### 9.3.6 Regional reference richness
-
-Expected richness values extracted from protected areas are summarized within each biogeographic region. The maximum expected richness observed among reference points is used as the regional reference value:
-
-```r
-reference_richness = max_expected_richness
-```
-
-This creates a region-specific benchmark against which all grid cells within the same biogeographic region are evaluated. Using region-specific reference values accounts for natural variation in species richness across environmental gradients and avoids comparing ecosystems with inherently different biodiversity potentials.
-
-#### 9.3.7 Scaling richness
-
-Scaled richness is calculated as
-
-$$
-\text{Scaled richness} =
-\frac{
-R_i-R_{\min}
-}{
-R_{\mathrm{ref},r}-R_{\min}
-},
-$$
-
-where $R_i$ is the expected richness at location $i$, $R_{\min}$ is the minimum expected richness observed across the prediction domain, and $R_{\mathrm{ref},r}$ is the regional reference richness derived from protected areas in biogeographic region $r$.
-
-Scaled richness values are constrained to the interval $[0,1]$, where:
-
-* values close to $1$ indicate richness approaching the best reference conditions observed in the region;
-* values close to $0$ indicate low richness relative to both the regional reference condition and the lower bound of the study area.
 
 ## 10. Results
 
@@ -2175,6 +924,180 @@ Repeat the final results here. Typically this is a map or table of indicator val
 This is typically where people will harvest data from, so make sure to include all relevant output here, but don't clutter this section with too much output either.
 
 -->
+
+### 10.1 Model selection
+
+Model selection indicated that the importance of including spatial structure differed among species and between ecosystem types (@tbl-forestBestModels). For the forest ecosystem, the selected multi-species model included spatial structure, with a WAIC of $38,423.6$. Among the single-species models, spatial models were selected for six species: *Dryocopus martius*, *Jynx torquilla*, *Muscicapa striata*, *Phylloscopus sibilatrix*, *Pyrrhula pyrrhula*, and *Tetrao urogallus*. The remaining forest species were better supported by non-spatial models according to WAIC.
+
+```{r tbl-forestBestModels}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(knitr)
+
+forest <- readr::read_csv("../data/forest/best_models.csv") |>
+  dplyr::mutate(`Ecosystem type` = "Forest")
+mountain <- readr::read_csv("../data/mountain/best_models.csv")|>
+  dplyr::mutate(`Ecosystem type` = "Mountain")
+
+ref_vals <- bind_rows(forest |> dplyr::select(Species, `Ecosystem type`, single_species, spatial, WAIC),
+                        mountain |> dplyr::select(Species, `Ecosystem type`, single_species, spatial, WAIC))
+
+knitr::kable(
+  ref_vals,
+  caption = "Selected occupancy models for forest and mountain bird species based on WAIC. For each ecosystem, the lowest-WAIC model was selected within the multi-species framework and, separately, for each species within the single-species framework. `Is single?` indicates whether the model was fitted separately for each species, while `Is spatial?` indicates whether spatial structure was included in the model. The rows with missing species names represent the selected multi-species models.",
+  col.names = c("Species", "Ecosystem type", "Is single?", "Is spatial?", "WAIC")
+)
+```
+
+For the mountain ecosystem, the selected multi-species model was non-spatial, with a WAIC of $70,524.3$. Spatial structure was nevertheless supported for several individual species, including *Calcarius lapponicus*, *Corvus corax*, *Eremophila alpestris*, *Lagopus lagopus*, *Luscinia svecica*, *Oenanthe oenanthe*, *Plectrophenax nivalis*, *Pluvialis apricaria*, and *Turdus torquatus*. Other mountain species were better supported by non-spatial single-species models. The results therefore show that there was no single spatial modelling structure that was consistently preferred across all species. Spatial dependence appeared important for a subset of species, while non-spatial models provided better support for others. This variation is ecologically plausible because species differ in their spatial distribution, habitat associations, dispersal patterns, and responses to environmental gradients.
+
+Importantly, the WAIC comparison was used primarily to identify the best model within each modelling framework, rather than to rank single-species models directly against multi-species models. The final selection between the best multi-species and single-species predictions was therefore based on their spatial predictions. This provided a more ecologically meaningful basis for selecting the model used to generate the ecosystem indicator, particularly where the competing models had similar spatial predictions.
+
+
+### 10.2 Effects of covariates on occupancy
+
+#### 10.2.1 Forest ecosystem
+
+The estimated effects of environmental and forest habitat covariates varied considerably among bird species, with some covariates showing more consistent associations than others (@fig-forestOccupancy). Elevation showed pronounced species-specific responses, with several species exhibiting negative associations and others positive associations. This indicates that the elevational distribution of forest bird species was not uniform, but differed according to species' habitat requirements. Latitude also showed substantial variation among species, suggesting geographic differences in occupancy that were not fully explained by the other environmental covariates.
+
+```{r fig-forestOccupancy}
+#| fig-cap: 'Species-specific effects of environmental and forest habitat covariates on occupancy in forest ecosystems. Points represent posterior mean coefficient estimates and horizontal lines represent the corresponding uncertainty intervals for three model formulations: multi-species spatial model (red), single-species non-spatial models (blue), and single-species spatial models (green). Estimates are shown for elevation, slope, aspect, dominant tree species, forest type, and latitude. The vertical dashed line indicates a coefficient of zero; estimates to either side indicate negative and positive associations with species occupancy, respectively.'
+#| out-width: 100%
+#| echo: false
+#| warning: false
+knitr::include_graphics("../img/forest/occupancy_effects.png")
+```
+
+In contrast, the estimated effects of slope and aspect were generally smaller and more centred around zero, although some species showed evidence of positive or negative associations. This suggests that topographic characteristics had a more limited and species-specific influence on occupancy compared with elevation and latitude.
+
+The effects of dominant tree species and forest type also varied among species. Some forest bird species showed relatively strong associations with particular forest types or dominant tree species, whereas estimates for other species were close to zero. These patterns indicate that forest composition and habitat type may be important determinants of occupancy for particular species rather than having a consistent effect across the entire bird community.
+
+Across the three modelling approaches, the estimated effects were generally similar in direction, although the magnitude and uncertainty differed between models. The spatial single-species and multi-species models often produced comparable estimates, while the inclusion of spatial structure resulted in differences for some species and covariates. Overall, the results demonstrate that forest bird occupancy is shaped by a combination of broad-scale environmental gradients and local forest characteristics, with the importance and direction of these effects differing among species.
+
+#### 10.2.2 Mountain ecosystem
+
+Mountain bird species showed pronounced differences in their responses to environmental and anthropogenic gradients (@fig-mountainOccupancy). Elevation was one of the clearest sources of species-specific variation in occupancy. Several species showed positive associations with elevation, including Lagopus muta and Plectrophenax nivalis, whereas Lagopus lagopus and Luscinia svecica showed strong negative associations. These contrasting responses indicate that mountain bird species occupy different positions along the elevational gradient, reflecting differences in their habitat requirements.
+
+The effects of latitude were also variable among species. Several species showed positive associations with latitude, while others, particularly Lagopus lagopus and Luscinia svecica, showed negative associations. This suggests that geographic variation in occupancy remains important even after accounting for other environmental characteristics.
+
+```{r fig-mountainOccupancy}
+#| fig-cap: 'Species-specific effects of environmental and anthropogenic covariates on occupancy in mountain ecosystems. Points represent posterior mean coefficient estimates and horizontal lines represent the corresponding uncertainty intervals for three model formulations: multi-species non-spatial models (red), single-species non-spatial models (blue), and single-species spatial models (green). Estimates are shown for elevation, slope, aspect, latitude, distance to wind farm, and distance to tree line. The vertical dashed line indicates a coefficient of zero; estimates to the left and right indicate negative and positive associations with species occupancy, respectively.'
+#| out-width: 100%
+#| echo: false
+#| warning: false
+knitr::include_graphics("../img/mountain/occupancy_effects.png")
+```
+
+In contrast, slope and aspect generally had weaker and more consistent effects around zero. Although some species showed positive or negative associations with slope, most estimates were relatively close to zero. Aspect showed particularly limited effects for most species, suggesting that these topographic variables were less important predictors of occupancy than elevation and latitude for the mountain bird community.
+The two variables representing potential anthropogenic and habitat gradients—distance to wind farms and distance to the tree line—showed species-specific responses. Responses to distance from wind farms varied in direction, with some species occurring more frequently farther from wind farms and others showing the opposite pattern. Similarly, distance to tree line was positively associated with occupancy for some species, while others showed weak or negative relationships. These contrasting responses indicate that the influence of these landscape features is species dependent rather than uniform across the mountain bird community.
+
+Overall, the results show that mountain bird occupancy is strongly structured by species-specific responses to elevation and geographic position, while responses to topography, wind farms and the tree line are generally more variable and weaker. The broadly similar estimates among the three modelling approaches suggest that the main ecological patterns were relatively robust to model formulation, although differences in effect magnitude and uncertainty were apparent for some species and covariates. These results highlight the importance of accounting for species-specific habitat relationships when assessing the condition of mountain ecosystems rather than assuming that all mountain bird species respond similarly to environmental change.
+
+### 10.3 Spatial distribution of expected richness and indicator
+
+#### 10.3.1 Forest ecosystem
+
+The forest ecosystem showed a clear south–north gradient in both expected species richness and the scaled indicator (@fig-forestIndicator), with higher values generally occurring in southern and southeastern Norway and lower values in the north. The scaled indicator closely followed the spatial pattern of expected richness, but expresses richness relative to the expert-elicited reference condition. Thus, higher indicator values represent forest areas supporting a larger proportion of the expected characteristic bird community, whereas lower values indicate a greater departure from the reference condition.
+
+```{r fig-forestIndicator}
+#| fig-cap: "Spatial distribution of (a) expected species richness (out of 18 species under consideration) and (b) the scaled ecosystem indicator for the forest ecosystem. Expected species richness represents the model-estimated number of characteristic forest bird species, while the scaled indicator expresses this richness relative to the expert-elicited reference condition."
+#| fig-subcap:
+#|   - "Expected species richness."
+#|   - "Scaled ecosystem indicator."
+#| layout-ncol: 2
+#| out-width: 100%
+#| echo: false
+#| warning: false
+
+knitr::include_graphics("../img/forest/multiple_species_expected_richness.png")
+
+knitr::include_graphics("../img/forest/multiple_species_scaled_indicator.png")
+```
+
+#### 10.3.2 Mountain ecosystem
+
+The mountain ecosystem showed a contrasting spatial pattern, with expected species richness generally higher in northern and higher-elevation areas and lower in southern and lower-elevation areas (@fig-mountainIndicator). The scaled indicator followed a similar pattern, indicating that areas with higher expected richness were generally closer to the expert-elicited reference condition. Compared with forests, relatively high indicator values extended further north, reflecting differences in the distribution and ecological requirements of the characteristic bird communities. These spatial patterns provide a basis for identifying areas where the expected bird community is relatively close to, or substantially below, the reference condition.
+
+```{r fig-mountainIndicator}
+#| fig-cap: "Spatial distribution of expected species richness and the scaled ecosystem indicator for the mountain ecosystem. (a) Expected species richness (out of 16 species under consideration) represents the model-estimated number of characteristic mountain bird species. (b) The scaled ecosystem indicator expresses expected species richness relative to the expert-elicited reference condition, with higher values indicating conditions closer to the reference state."
+#| fig-subcap:
+#|   - "Expected species richness."
+#|   - "Scaled ecosystem indicator."
+#| layout-ncol: 2
+#| out-width: 100%
+#| echo: false
+#| warning: false
+
+knitr::include_graphics("../img/mountain/multiple_species_expected_richness.png")
+
+knitr::include_graphics("../img/mountain/multiple_species_scaled_indicator.png")
+```
+
+
+### 10.4 Expected richness versus covariates
+
+#### 10.4.1 Forest ecosystem
+
+Expected forest bird richness varied along several environmental and habitat gradients (Figure @fig-forestComparison). Latitude showed the strongest relationship, with richness decreasing towards northern Norway. Richness also showed a non-linear relationship with elevation, increasing at low elevations before declining at higher elevations. Relationships with slope and aspect were weaker. Forest composition also contributed to variation in expected richness, with differences among dominant tree species and forest types. Overall, the results indicate that expected forest bird richness is primarily associated with geographic position and elevation, with additional variation related to forest composition and type.
+
+```{r fig-forestComparison}
+#| fig-cap: "Relationships between expected forest bird species richness and environmental and forest habitat characteristics. Points represent predicted expected species richness at sampled locations, with transparency indicating overlapping observations. The blue lines show the fitted smooth relationships for continuous covariates; boxplots show the distribution of expected richness across categorical forest characteristics. The relationships are shown for elevation, slope, aspect, dominant tree species, forest type, and latitude."
+#| out-width: 100%
+#| echo: false
+#| warning: false
+
+knitr::include_graphics("../img/forest/multiple_species_richCovRel.png")
+```
+
+
+#### 10.4.2 Mountain ecosystem
+
+Expected mountain bird richness was associated with several environmental and landscape gradients (Figure @fig-mountainComparison). Elevation and latitude showed clear non-linear relationships, with richness generally increasing towards higher elevations and northern latitudes. Slope showed a weaker negative relationship, while aspect had little apparent effect. Expected richness also varied with distance to wind farms, although the relationship was relatively weak and levelled off at greater distances. In contrast, distance to the tree line showed a strong non-linear relationship, with richness increasing markedly around the tree-line gradient before reaching a relatively stable level. Overall, mountain bird richness was most strongly associated with elevation, latitude, and position relative to the tree line, while slope, aspect, and distance to wind farms showed weaker or more variable relationships.
+
+```{r fig-mountainComparison}
+#| fig-cap: "Relationships between expected mountain bird species richness and environmental and anthropogenic characteristics. Points represent predicted expected species richness at sampled locations, with transparency indicating overlapping observations. Blue lines show fitted smooth relationships for the continuous covariates: elevation, slope, aspect, latitude, distance to wind farms, and distance to the tree line. Shaded areas represent uncertainty around the fitted relationships."
+#| out-width: 100%
+#| echo: false
+#| warning: false
+
+knitr::include_graphics("../img/mountain/multiple_species_richCovRel.png")
+```
+
+
+### 10.5 Representative indicator values
+
+The indicator reveals clear differences in ecosystem condition among regions, which can help identify where conservation or management efforts may be most needed (@tbl-estimatedIndicators). Forest ecosystems showed the greatest regional differences, with median indicator values ranging from 0.38 in the North to 0.80 in the South. The East and West also had relatively high values (0.73 and 0.72), while Central Norway had an intermediate value (0.60). In practical terms, this suggests that the expected bird community in northern forests is substantially further from the defined reference condition than in southern forests.   For mountain ecosystems, regional differences were smaller. Median values ranged from 0.54 in the South to 0.68 in the North, with the national value at 0.64. Thus, mountain ecosystems showed a more consistent level of the expected bird community across regions, although the South had a noticeably lower value than the other regions.
+
+```{r tbl-estimatedIndicators}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(knitr)
+
+forest <- readr::read_csv("../data/forest/representative_indicator_vals.csv") |>
+  dplyr::mutate(`Ecosystem type` = "Forest") |>
+  dplyr::filter(!region %in% "National")
+mountain <- readr::read_csv("../data/mountain/representative_indicator_vals.csv")|>
+  dplyr::mutate(`Ecosystem type` = "Mountain")|>
+  dplyr::filter(!region %in% "National")
+
+ref_vals <- bind_rows(forest |> dplyr::select(`Ecosystem type`, region, median, lower, upper),
+                        mountain |> dplyr::select(`Ecosystem type`, region, median, lower, upper))
+
+knitr::kable(
+  ref_vals,
+  caption = "Regional estimates of the ecosystem indicator under reference conditions for forest and mountain ecosystems. Values show the median indicator value and the corresponding lower and upper quantiles based on bootstrap estimates, reported at the national and biogeographic-region levels.",
+  col.names = c("Ecosystem type", "Region", "Median", "Lower quantile", "Upper quantile")
+)
+
+```
+
+
 
 ## 11. Export file
 
